@@ -36,9 +36,9 @@ header:
       en      : &EN       CV
     url: /files/cv.pdf
  
-  - titles:
-      en      : &EN       "\"I workout\""
-    url: /iworkout.html
+  #- titles:
+  #    en      : &EN       "\"I workout\""
+  #  url: /iworkout.html
 
   - titles:
       # @start locale config

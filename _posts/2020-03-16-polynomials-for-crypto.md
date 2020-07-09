@@ -70,7 +70,9 @@ Importantly, $\deg{q} = \deg{a} - \deg{b}$ and $\deg{r} < \deg{b}$.
 
 ### Lagrange interpolation
 
+<p hidden>
 $\newcommand{\lagr}{\mathcal{L}}$
+</p>
 
 Given $n$ pairs $(x_i, y_i)\_{i\in[n]}$, one can compute or _interpolate_ a degree $\le n-1$ polynomial $\phi(X)$ such that:
 $$\phi(x_i)=y_i,\forall i\in[n]$$ 
@@ -102,6 +104,28 @@ Next, by applying the two key properties of $\lagr_i(X)$ from above, you can eas
 \phi(x_1) &=  y_1 \lagr_1(x_1) + y_2 \lagr_2(x_1) + y_3 \lagr_3(x_1) = y_1 \cdot 1 + y_2 \cdot 0 + y_3 \cdot 0 = y_1\\\\\
 \phi(x_2) &=  y_1 \lagr_1(x_2) + y_2 \lagr_2(x_2) + y_3 \lagr_3(x_2) = y_1 \cdot 0 + y_2 \cdot 1 + y_3 \cdot 0 = y_2\\\\\
 \phi(x_3) &=  y_1 \lagr_1(x_3) + y_2 \lagr_2(x_3) + y_3 \lagr_3(x_3) = y_1 \cdot 0 + y_2 \cdot 0 + y_3 \cdot 1 = y_3
+\end{align}
+
+An **important detail** is that the degree of the interpolated $\phi(X)$ is $\le n-1$ and not necessarily exactly equal to $n-1$.
+To see this, consider interpolating the polynomial $\phi(X)$ such that $\phi(i) = i$ for all $i\in [n]$.
+In other words, $x_i = y_i = i$.
+
+The inspired reader might notice that the polynomial $\phi(X) = X$ could satisfy our constraints.
+But is this what the Lagrange interpolation will return?
+After all, the interpolated $\phi(X)$ is a sum of degree $n-1$ polynomials $\lagr_i(X)$, so could it have degree 1?
+Well, it turns out, yes, because things cancel out.
+To see, this take a simple example, with $n=3$:
+\begin{align}
+\phi(X) &=\sum_{i\in [3]} i \cdot \lagr_i(X) = \sum_{i\in [3]} i \cdot \prod_{j\in[3]\setminus\{i\}} \frac{X - j}{i - j}\\\\\
+    &= 1\cdot \frac{X-2}{1-2}\frac{X-3}{1-3} + 2\cdot \frac{X-1}{2-1}\frac{X-3}{2-3} + 3\cdot\frac{X-1}{3-1}\frac{X-2}{3-2}\\\\\
+    &= \frac{X-2}{-1}\frac{X-3}{-2} + 2\cdot \frac{X-1}{1}\frac{X-3}{-1} + 3\cdot \frac{X-1}{2}\frac{X-2}{1}\\\\\
+    &= \frac{1}{2}(X-2)(X-3) - 2(X-1)(X-3) + \frac{3}{2}(X-1)(X-2)\\\\\
+    &= \frac{1}{2}[(X-2)(X-3) + 3(X-1)(X-2)] - 2(X-1)(X-3)\\\\\
+    &= \frac{1}{2}[(X-2)(4X-6)] - 2(X-1)(X-3)\\\\\
+    &= (X-2)(2X-3) - 2(X-1)(X-3)\\\\\
+    &= (2X^2 - 4X - 3X + 6) - 2(X^2 - 4X +3)\\\\\
+    &= (2X^2 - 7X + 6) - 2X^2 + 8X - 6\\\\\
+    &= X
 \end{align}
 
 <!-- TODO: 

@@ -58,5 +58,12 @@ Slowly.
 He also enjoys travelling, but only to destinations with total solar eclipses.
 Naturally, he dislikes clouds.
 (Please join him in Antarctica, in 2021.) 
-Alin might buy a motorcycle and risk the few, still-functioning limbs in his body.
-Someone should convince him not to do this.
+
+<strike><b>Alin might buy a motorcycle and risk the few, still-functioning limbs in his body.
+Someone should convince him not to do this.</b></strike>
+
+Alin recently purchased a Honda Rebel 500.
+He has never been more happy and terrified at the same time.
+Wish him luck.
+
+![](/pictures/rebel-500.jpg){: .align-right}

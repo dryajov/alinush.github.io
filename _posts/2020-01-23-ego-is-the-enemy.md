@@ -8,11 +8,10 @@ article_header:
     src: /pictures/ego-is-the-enemy.jpg
 ---
 
-This is [Ryan Holiday's "Ego is the enemy"](https://www.amazon.com/gp/product/1591847818/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=alinush-20&creative=9325&linkCode=as2&creativeASIN=1591847818&linkId=e844a94e61d7d5aaa549fc5af11e68da) in bullet-point form.
-(Support this article by buying the book using this link.)
+This is [Ryan Holiday's "Ego is the enemy"](https://www.amazon.com/gp/product/1591847818) in bullet-point form.
 
 These are the ideas I found interesting from the book, without the excellent stories used to back them.
-For those, you'll have to [buy the book](https://www.amazon.com/gp/product/1591847818/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=alinush-20&creative=9325&linkCode=as2&creativeASIN=1591847818&linkId=e844a94e61d7d5aaa549fc5af11e68da).
+For those, you'll have to [buy the book](https://www.amazon.com/gp/product/1591847818).
 I changed some of the excerpts from 2nd person to 1st person, so they resonate more.
 I kept the same table of contents as in the book, except I changed some of the chapter titles.
 
@@ -286,7 +285,7 @@ Be humble in your aspirations, gracious in your success and resilient in your fa
         + Or not $$\Rightarrow$$ regroup!
     + Please don't choose _"I want to be better than, have more than, everyone, everywhere."_
  - Do not look at other people and make their approval your goal, ignoring your true potential and purpose.
- - **Definition (Euthymia)**: A sense of your own path and how to stay on it without getting distracted by all the others that intersect it.
+ - **Definition (Euthymia)**: _A sense of your own path and how to stay on it without getting distracted by all the others that intersect it._
  - Think about what's important to you and ignore the rest.
     + Why do you do what you do?
     + What are you after?
@@ -397,6 +396,12 @@ Be humble in your aspirations, gracious in your success and resilient in your fa
  - Obsession with the past is ego embodied: 
     + You can't conceive of accepting that someone could hurt you, deliberately or otherwise,
     + So you hate.
+
+ > It is the small things.  
+ > Everyday deeds of ordinary folk that keeps the darkness at bay.  
+ > Simple acts of kindness and love.
+ >
+ > _([Mithrandir](https://www.youtube.com/watch?v=o-8dFg0OSdE))_
 
 ### For everything that comes next, ego is the enemy...
 

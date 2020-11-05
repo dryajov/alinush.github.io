@@ -7,6 +7,8 @@ titles:
 key: page-papers
 ---
 
+(_Recent UCL talk [here](https://docs.google.com/presentation/d/1gemg7oXTFGiF99PeNbyHMcbNPijEjxfV8KsU4bzTKFY/edit?usp=sharing)._)
+
 **How to Keep a Secret and Share a Public Key (Using Polynomial Commitments)**, Alin Tomescu, _PhD thesis_. <a class="button button--success button--rounded button--sm" href="papers/phd-thesis-mit2020.pdf"><i class="fas fa-download"></i>PDF</a>, [LaTeX](https://www.github.com/alinush/phd-thesis)
 
 **Authenticated Dictionaries with Cross-Incremental Proof (Dis)aggregation**, Alin Tomescu, Yu Xia, Zachary Newman, _in submission_, (blogpost will come soon), <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2020/1239.pdf"><i class="fas fa-download"></i>PDF</a>, [zkStudyClub talk](https://www.youtube.com/watch?v=PrgeQJioCI8), [zkStudyClub slides](https://github.com/alinush/authdict-talk/blob/zkstudyclub/talk.pdf)

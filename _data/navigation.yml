@@ -72,6 +72,10 @@ cryptomat:
   #   url: /tbd.html
   #- title: Hashing
   #- title: Digital Signatures
+  - title: Hidden-order groups
+    #children:
+      #- title: Assumptions
+        #url: /2020/11/05/assumptions-in-hidden-order-groups.html
   - title: Polynomials
     children:
       - title: Basics of Polynomials

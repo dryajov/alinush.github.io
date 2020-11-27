@@ -2,7 +2,6 @@
 tags: polynomials
 title: "Basics of Polynomials for Cryptography"
 date: 2020-03-16 10:38:00
-#published: false
 sidebar:
     nav: cryptomat
 ---
@@ -66,7 +65,8 @@ Specifically, dividing a polynomial $a(X)$ by $b(X)$ gives a **quotient** $q(X)$
 
 $$a(X) = q(X) b(X) + r(X)$$
 
-Importantly, $\deg{q} = \deg{a} - \deg{b}$ and $\deg{r} < \deg{b}$.
+Importantly, $\deg{r} < \deg{b}$ and, if $\deg{a} \ge \deg{b}$, then $\deg{q} = \deg{a} - \deg{b}$.
+Otherwise, $q(X) = 0$.
 
 ### Lagrange interpolation
 

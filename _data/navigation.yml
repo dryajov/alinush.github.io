@@ -68,14 +68,24 @@ header:
 # NOTE: For some reason, only depth-1 nesting works here.
 # I tried using subfolderitems and subsubfolderitems with 'page' rather than 'title' but no luck
 cryptomat:
+  - title: Number Theory
+    children:
+      - title: Linear Diophantine Equations
+        url: /2020/11/23/Linear-Diophantine-Equations.html
   #- title: Group Theory
   #   url: /tbd.html
   #- title: Hashing
   #- title: Digital Signatures
   - title: Hidden-order groups
-    #children:
-      #- title: Assumptions
-        #url: /2020/11/05/assumptions-in-hidden-order-groups.html
+    children:
+      - title: Cryptographic assumptions
+        url: /2020/11/05/cryptographic-assumptions-in-hidden-order-groups.html
+
+      - title: RSA Accumulators
+        url: /2020/11/24/RSA-accumulators.html
+
+      - title: Catalano-Fiore Vector Commitments
+        url: /2020/11/24/Catalano-Fiore-Vector-Commitments.html
   - title: Polynomials
     children:
       - title: Basics of Polynomials

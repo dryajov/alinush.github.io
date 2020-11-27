@@ -1,8 +1,7 @@
 ---
-tags: vector-commitments vc polynomials fast-fourier-transform fft lagrange aggregation kate-zaverucha-goldberg kzg polycommit
+tags: vector-commitments vc polynomials fast-fourier-transform fft lagrange aggregation kate-zaverucha-goldberg kzg polycommit stateless-validation papers cryptography
 title: "Aggregatable Subvector Commitments for Stateless Cryptocurrencies (from Lagrange polynomials)"
 date: 2020-05-06 14:00:00
-#published: false
 ---
 {: .info}
 **tl;dr:** We build a vector commitment (VC) scheme from KZG commitments to Lagrange polynomials that has (1) constant-sized, aggregatable proofs, which can all be precomputed in $O(n\log{n})$ time, and (2) linear public parameters, which can be derived from any "powers-of-tau" CRS in $O(n\log{n})$ time.

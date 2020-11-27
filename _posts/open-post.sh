@@ -37,9 +37,5 @@ else
     file=`echo "$files" | head -n 1`
 
     vim "$postdir/$file"
-    cat "$postdir/$file"
-    echo
-    echo "vim $postdir/$file"
-    echo
 fi
 

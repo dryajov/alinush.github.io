@@ -16,4 +16,4 @@ Put simply, bilinear accumulators are commitments to sets with constant-sized (n
 
 <!-- more -->
 
-For more details, see this full post on [Decentralized Thoughts](https://decentralizedthoughts.github.io/2020-04-02-bilinear-accumulators-for-cryptocurrency/).
+For more details, see this full post on [Decentralized Thoughts](https://decentralizedthoughts.github.io/2020-04-01-bilinear-accumulators-for-cryptocurrency/).

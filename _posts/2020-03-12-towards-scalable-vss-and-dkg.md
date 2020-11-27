@@ -1,12 +1,11 @@
 ---
-tags: papers polynomials verifiable-secret-sharing vss distributed-key-generation dkg kate-zaverucha-goldberg kzg polycommit fast-fourier-transform fft
+tags: papers polynomials verifiable-secret-sharing vss distributed-key-generation dkg kate-zaverucha-goldberg kzg polycommit fast-fourier-transform fft cryptography
 title: "Towards Scalable Verifiable Secret Sharing and Distributed Key Generation"
 date: 2020-03-12 14:00:00
 article_header:
   type: cover
   image:
     src: /pictures/baam-thanos-does-a-chinup.gif
-#published: false
 ---
 {: .info}
 **tl;dr:** We "authenticate" a polynomial multipoint evaluation using Kate-Zaverucha-Goldberg (KZG) commitments.

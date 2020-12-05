@@ -1,6 +1,6 @@
 ---
 tags: matrix multiplication vector toeplitz fast-fourier-transform fft 
-title: "Multiplying a Toeplitz matrix by a vector"
+title: Multiplying a Toeplitz matrix by a vector
 date: 2020-03-19 14:00:00
 ---
 

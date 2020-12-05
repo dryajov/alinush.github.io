@@ -1,6 +1,6 @@
 ---
 tags: polynomials
-title: "Basics of Polynomials for Cryptography"
+title: Basics of Polynomials for Cryptography
 date: 2020-03-16 10:38:00
 sidebar:
     nav: cryptomat

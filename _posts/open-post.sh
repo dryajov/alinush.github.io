@@ -23,8 +23,12 @@ files=`echo "$files" | cut -c 3-` # cuts the first two characters (i.e., the ./)
 
 files=`echo "$files" | sort`
 
+sorted_files=`echo "$files" | sort -r`
+
+titles=`grep '^title:' $sorted_files | cut -f 3 -d':'`
+
 if [ "$1" == "l" -o "$1" == "list" -o "$1" == "-l" ]; then
-    echo "$files" | sort -r | awk '{printf "%d\t%s\n", NR, $0}' | more
+    echo "$titles" | awk '{printf "%d\t%s\n", NR, $0}' | more
 else
     line=$1
     if [ -z "$line" ]; then

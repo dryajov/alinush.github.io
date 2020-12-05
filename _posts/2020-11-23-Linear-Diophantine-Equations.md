@@ -1,6 +1,6 @@
 ---
 tags: number-theory diophantine-equations gcd
-title: "Linear Diophantine Equations"
+title: Linear Diophantine Equations
 #published: false
 sidebar:
     nav: cryptomat
@@ -147,6 +147,11 @@ In this case, all integer solutions are of the form:
     z &= \ell a / \gcd(a, c) - k b / \gcd(b, c)
 \end{align}
 Here, $m,\ell,k$ are arbitrary integers.
+
+<!-- TODO: proof 
+    See page 10 here: https://people.math.sc.edu/howard/Classes/580f/hw5.pdf
+    See https://math.stackexchange.com/questions/3325185/find-all-the-integral-solutions-to-the-equation-323x391y437z-10473/3327153#3327153
+-->
 
 This could also be simplified in terms of the _lowest common multiple (LCM)_, since $a b = \gcd(a,b) \lcm(a,b)\Rightarrow b / \gcd(a,b) = \lcm(a,b) / a$:
 \begin{align}

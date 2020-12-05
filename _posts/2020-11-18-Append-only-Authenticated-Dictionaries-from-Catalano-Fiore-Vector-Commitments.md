@@ -1,6 +1,6 @@
 ---
 tags:
-title: "Append-only Authenticated Dictionaries from Catalano-Fiore Vector Commitments"
+title: Append-only Authenticated Dictionaries from Catalano-Fiore Vector Commitments
 published: false
 ---
 

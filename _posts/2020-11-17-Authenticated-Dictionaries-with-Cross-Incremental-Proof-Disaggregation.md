@@ -1,6 +1,6 @@
 ---
 tags:
-title: "Authenticated Dictionaries with Cross-Incremental Proof (Dis)aggregation"
+title: Authenticated Dictionaries with Cross-Incremental Proof (Dis)aggregation
 tags: accumulators aggregation cryptography vector-commitments vc papers authenticated-dictionaries stateless-validation transparency-logs hidden-order-groups
 date: 2020-11-26 00:00:00
 #published: false

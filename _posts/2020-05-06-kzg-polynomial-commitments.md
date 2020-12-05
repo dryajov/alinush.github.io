@@ -1,6 +1,6 @@
 ---
 tags: polynomials polycommit cryptography
-title: "Kate-Zaverucha-Goldberg (KZG) Constant-Sized Polynomial Commitments"
+title: Kate-Zaverucha-Goldberg (KZG) Constant-Sized Polynomial Commitments
 date: 2020-05-06 22:38:00
 sidebar:
     nav: cryptomat

@@ -1,5 +1,5 @@
 ---
-title: "Understanding Simulation and Zero-Knowledge"
+title: Understanding Simulation and Zero-Knowledge
 date: 2020-05-07 10:00:00
 published: false
 sidebar:

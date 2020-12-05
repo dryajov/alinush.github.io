@@ -1,6 +1,6 @@
 ---
 tags:
-title: "Catalano-Fiore Vector Commitments"
+title: Catalano-Fiore Vector Commitments
 tags: accumulators aggregation cryptography vector-commitments vc rsa hidden-order-groups
 #published: false
 sidebar:

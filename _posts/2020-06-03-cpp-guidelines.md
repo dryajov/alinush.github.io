@@ -1,6 +1,6 @@
 ---
 tags: polynomials polycommit
-title: "How to write C++ without paying for it later"
+title: How to write C++ without paying for it later
 date: 2020-06-01 22:38:00
 published: false
 ---

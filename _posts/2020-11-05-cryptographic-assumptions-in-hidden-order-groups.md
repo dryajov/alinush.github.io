@@ -153,6 +153,7 @@ Finally, $\Adv$ simply outputs $(u,\ell)$, breaking Strong RSA with non-negligib
 
  - Again, what restrictions apply to $\ell$? Seems like $\ell > 2$ in RSA groups (though not sure how I would compute $u^{1/2}$ for random $u$.
  - I believe [LM18] considers composite $\ell$ as a different assumption.
+    + Yes, and they show Strong RSA implies their assumption.
 -->
 
 ### The order assumption (OA)

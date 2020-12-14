@@ -1,7 +1,7 @@
 header:
   - titles:
       # @start locale config
-      en      : &EN       Archive
+      en      : &EN       Posts
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
@@ -24,6 +24,9 @@ header:
       # @end locale config
     url: /archive.html
 
+  - titles:
+      en      : &EN       Talks
+    url: /talks.html
   - titles:
       en      : &EN       Papers
     url: /papers.html

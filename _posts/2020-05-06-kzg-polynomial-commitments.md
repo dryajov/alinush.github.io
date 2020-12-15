@@ -97,6 +97,16 @@ e(g^{\phi(\tau) - R_I(\tau)}, g) &= e(g,g)^{q_I(\tau) A_I(\tau)}\Leftrightarrow\
 <!-- TODO: ## Aggregation of proofs -->
 <!-- TODO: ## Information-theoretic hiding -->
 
+## Applications
+
+There are many cryptographic tools one can build using polynomial commitment schemes such as KZG.
+
+Here's a few we've blogged about in the past:
+
+ * [Cryptographic accumulators](/2020/04/02/bilinear-accumulators-for-cryptocurrency.html)
+ - Vector Commitments (VC) schemes [with $O(\log{n})$-sized proofs](/2020/03/12/towards-scalable-vss-and-dkg.html) or [with $O(1)$-sized proofs](/2020/05/06/aggregatable-subvector-commitments-for-stateless-cryptocurrencies.html)
+ - [Range proofs](/2020/03/03/range-proofs-from-polynomial-commitments-reexplained.html)
+
 ### References
 
 [^KZG10b]: **Polynomial commitments**, by Kate, Aniket and Zaverucha, Gregory M and Goldberg, Ian, 2010, [[URL]](https://pdfs.semanticscholar.org/31eb/add7a0109a584cfbf94b3afaa3c117c78c91.pdf)

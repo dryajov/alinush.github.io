@@ -20,7 +20,7 @@ To commit to degree $\le \ell$ polynomials, need $\ell$-SDH public parameters:
 $$(g,g^\tau,g^{\tau^2},\dots,g^{\tau^\ell}) = (g^{\tau^i})_{i\in[0,\ell]}$$
 
 Here, $\tau$ is called the **trapdoor**.
-These parameters should be generated via a distributed protocol that outputs just the $g^{\tau^i}$'s and **forgets the trapdoor** $\tau$.
+These parameters should be generated via a distributed protocol[^BCGplus15]$^,$[^BGG18]$^,$[^BGM17] that outputs just the $g^{\tau^i}$'s and **forgets the trapdoor** $\tau$.
 
 The public parameters are **updatable**: given $g^{\tau^i}$'s, anyone can update them to $g^{\alpha^i}$'s where $\alpha = \tau + \Delta$ by picking a random $\Delta$ and computing:
 $$g^{\alpha^i} = \left(g^{\tau^i}\right)^{\Delta^i}$$
@@ -100,4 +100,7 @@ e(g^{\phi(\tau) - R_I(\tau)}, g) &= e(g,g)^{q_I(\tau) A_I(\tau)}\Leftrightarrow\
 ### References
 
 [^KZG10b]: **Polynomial commitments**, by Kate, Aniket and Zaverucha, Gregory M and Goldberg, Ian, 2010, [[URL]](https://pdfs.semanticscholar.org/31eb/add7a0109a584cfbf94b3afaa3c117c78c91.pdf)
+[^BCGplus15]: **Secure Sampling of Public Parameters for Succinct Zero Knowledge Proofs**, by E. Ben-Sasson and A. Chiesa and M. Green and E. Tromer and M. Virza, *in 2015 IEEE Symposium on Security and Privacy*, 2015
+[^BGG18]: **A Multi-party Protocol for Constructing the Public Parameters of the Pinocchio zk-SNARK**, by Bowe, Sean and Gabizon, Ariel and Green, Matthew D., *in Financial Cryptography and Data Security*, 2019
+[^BGM17]: **Scalable Multi-party Computation for zk-SNARK Parameters in the Random Beacon Model**, by Sean Bowe and Ariel Gabizon and Ian Miers, 2017, [[URL]](https://eprint.iacr.org/2017/1050)
 [^vG13ModernCh10]: **Fast polynomial evaluation and interpolation**, by von zur Gathen, Joachim and Gerhard, Jurgen, *in Modern Computer Algebra*, 2013

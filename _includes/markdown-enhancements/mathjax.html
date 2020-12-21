@@ -10,8 +10,32 @@
 		inlineMath: [['$','$'], ['\\(','\\)']]
 	}};
 	{%- if _mathjax_autoNumber == true -%}
-		_config.TeX = { equationNumbers: { autoNumber: "all" } };
+		_config.TeX = {
+      equationNumbers: { autoNumber: "all" },
+    };
+  {%- else -%}
+		_config.TeX = {
+    };
 	{%- endif -%}
+  
+  _config.TeX.Macros = {
+    F:  '\\mathbb{F}',
+    Gr:  '\\mathbb{G}',
+    Gho:  '\\Gr_?',
+    lagr: '\\mathcal{L}',
+    negl: '\\mathsf{negl}',
+    pk: '\\mathsf{pk}',
+    poly: '\\mathsf{poly}',
+    vk: '\\mathsf{vk}',
+    Z:  '\\mathbb{Z}',
+    ZNs:  '\\Z_N^*',
+    Zp: '\\Z_p',
+    Zq: '\\Z_q', 
+    bra: ['\\left\\langle #1\\right|', 1],
+    ket: ['\\left| \#1\\right\\rangle',1],
+    braket: ['\\langle \#1 \\mid \#2 \\rangle',2],
+  };
+
 	MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="{{ _sources.mathjax }}" async></script>

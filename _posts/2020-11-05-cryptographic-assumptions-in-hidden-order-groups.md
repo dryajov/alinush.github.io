@@ -15,19 +15,11 @@ In this post, we summarize some of the cryptographic hardness assumptions used i
 <p hidden>$$
 \def\Adv{\mathcal{A}}
 \def\Badv{\mathcal{B}}
-\def\G{\mathbb{G}}
 \def\GenGho{\mathsf{GenGroup}_?}
-\def\Gho{\G_?}
 \def\Ghosz{|\Gho|}
 \def\Ghoid{1_{\Gho}}
-\def\negl{\mathsf{negl}}
-\def\poly{\mathsf{poly}}
 \def\primes#1{\mathsf{Primes}_{#1}}
 \def\QRn{\mathsf{QR}_N}
-\def\Z{\mathbb{Z}}
-\def\Zn{\Z_N^*}
-\def\Zp{\Z_p^*}
-\def\Zq{\Z_q^*}
 $$</p>
 
 ## Terminology and notation
@@ -35,10 +27,10 @@ $$</p>
 We try to describe these assumptions in terms of a generic hidden-order group $\Gho$ of order $\Ghosz$.
 We denote the identity element in such a group by $\Ghoid$.
 
-Sometimes, we specifically refer to the RSA group $\Gho=\Zn$.
+Sometimes, we specifically refer to the RSA group $\Gho=\ZNs$.
 Specifically, let $N = pq$ be the product of two sufficiently-large prime integers $p, q$.
-Then, $$\Zn = \{0 < a < N \mathrel| \gcd(a, N) = 1\}$$ is the multiplicative group of integers co-prime with $N$.
-Recall that the size or _order_ of this group is given by the totient function: $|\Zn| = \phi(N) = (p-1)(q-1)$.
+Then, $$\ZNs = \{0 < a < N \mathrel| \gcd(a, N) = 1\}$$ is the multiplicative group of integers co-prime with $N$.
+Recall that the size or _order_ of this group is given by the totient function: $|\ZNs| = \phi(N) = (p-1)(q-1)$.
 
 Other times we might also refer to the _class group of imaginary quadratic orders_ introduced by Buchmann and Williams[^BW88].
 
@@ -89,7 +81,7 @@ $$\Pr
 \end{bmatrix} \leq \negl(\lambda)$$
 
 
-_Bach_[^Bach84] shows that factoring $N$ reduces to computing discrete logs in $\Zn$.
+_Bach_[^Bach84] shows that factoring $N$ reduces to computing discrete logs in $\ZNs$.
 
 <!--
 **TODO:**
@@ -122,7 +114,7 @@ $$\Pr
 -->
 
 {: .warning}
-When $\Gho=\Zn$, we cannot have $\ell=2$ because it would not be co-prime with $\phi(N) = (p-1)(q-1)$ and $f(x) = x^\ell = x^2$ would not be a permutation.
+When $\Gho=\ZNs$, we cannot have $\ell=2$ because it would not be co-prime with $\phi(N) = (p-1)(q-1)$ and $f(x) = x^\ell = x^2$ would not be a permutation.
 But if the subgroup of quadratic residues $\QRn$ is used, then $\ell = 2$ can be used (see [here](https://crypto.stackexchange.com/a/65986/21296)).
 So it is best not to restrict the definition above.
 
@@ -210,12 +202,12 @@ We have to show that order problem reduces to factoring.
 Well, if you have a factoring oracle, you can factor $N=pq$, compute $\phi(N)= (p-1)(q-1)$ and then factor $\phi(N)$ as well.
 Next, given an order problem $g$, you know that $g^{\phi(N)} = \Ghoid$.
 If only multiples of the order are desired, then the problem is solved.
-Otherwise, if the actual order is required, then we know the order has to be a divisor of $\phi(N)$, the order of $\Zn$.
+Otherwise, if the actual order is required, then we know the order has to be a divisor of $\phi(N)$, the order of $\ZNs$.
 Thus, one can repeatedly divide out the divisors of $\phi(N)$ from the exponent and check if the result is still $\Ghoid$.
 For details, see [this post](https://math.stackexchange.com/questions/1025578/is-there-a-better-way-of-finding-the-order-of-a-number-modulo-n) or see Algorithm 4.79 in Chapter 4 of the Handbook of Applied Cryptography[^MvV96Ch4Pubkey].
 
 **Factoring assumption implies OA:**
-_Miller_[^Mill76] shows that one can factor $N$ if one can compute the order of random group elements in $\Zn$ (see Theorem 4).
+_Miller_[^Mill76] shows that one can factor $N$ if one can compute the order of random group elements in $\ZNs$ (see Theorem 4).
 _Shor_[^Shor97] explains this reduction succinctly (see Section 5).
 <!--
 But the OA assumption asks for multiples of the order, not for the order itself, so the reduction might not have access to the order.
@@ -233,7 +225,7 @@ Questions and answers:
     + Seems like both work, so assuming multiple for generality.
  - Is [CF13e] referring to this assumption in their security proof?
     + Yes. They cite [HSS93], but [Mill76] would've been the right reference AFAICT.
- - How does the _Hastad et al._[^HSS93] result, which proves most elements in $\Zn$ are of high order, relate to this assumption?
+ - How does the _Hastad et al._[^HSS93] result, which proves most elements in $\ZNs$ are of high order, relate to this assumption?
     + Well, if a significant fraction weren't of high order, then the random $g$ whose order must be found would be easy to solve.
 -->
 
@@ -282,7 +274,7 @@ $$\Pr
 **TODO:**
 
  - it seems like the RSA paper mentions that any multiple of $\phi(N)$ can be used to factor $N$.
-     + Does this immediately imply the low-order assumption must hold in these groups, because if you find $g, x$ such that $g^x = \Ghoid$ for a random group element, then $x$ must be a multiple of $\|\Zn\| = \phi(N)$, no? Or it could be a multiple of any divisor of $\phi(N) = (p-1)(q-1)$ too I think?
+     + Does this immediately imply the low-order assumption must hold in these groups, because if you find $g, x$ such that $g^x = \Ghoid$ for a random group element, then $x$ must be a multiple of $\|\ZNs\| = \phi(N)$, no? Or it could be a multiple of any divisor of $\phi(N) = (p-1)(q-1)$ too I think?
  - How come low-order assumption doesn't imply factoring assumption?
 -->
 
@@ -294,12 +286,12 @@ However, for particular kinds of $N$, they show that factoring reduces to LOA.
 
 ## Other notes
 
-_Hohenberger_[^Hoh03] introduces the notion of a _pseudo-free group_ and _Rivest_[^Rive04] shows that if $\Zn$ is pseudo-free, then $\Zn$ satisfies Strong RSA and DL.
+_Hohenberger_[^Hoh03] introduces the notion of a _pseudo-free group_ and _Rivest_[^Rive04] shows that if $\ZNs$ is pseudo-free, then $\ZNs$ satisfies Strong RSA and DL.
 
 _Rabin_[^Rabi79] shows that solving polynomial congruences $\phi(x) \equiv 0 \pmod N$ is as hard as factoring $N$ (see Section 5).
 He also shows that an algorithm, which given $(y,N)$, computes quadratic residues $x$ such that $x^2 = y \pmod N$ can be used to factor $N$ (see Theorem 1).
 
-_Shor_[^Shor97] shows that finding the order $\ell$ of a random element $g$ in $\Zn$ (i.e., $g^\ell = 1$) can be done using a _quantum computer_ in polynomial time. 
+_Shor_[^Shor97] shows that finding the order $\ell$ of a random element $g$ in $\ZNs$ (i.e., $g^\ell = 1$) can be done using a _quantum computer_ in polynomial time. 
 (Shor specifically requires $\ell$ to be the _order_: i.e., the smallest such integer.)
 Then, Shor uses a reduction by _Miller_[^Mill76] to factor $N$, given the quantum oracle for solving the order problem.
 Stephanie Blanda gives an [intuitive explanation](https://blogs.ams.org/mathgradblog/2014/04/30/shors-algorithm-breaking-rsa-encryption/).

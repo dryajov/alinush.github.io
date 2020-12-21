@@ -19,9 +19,7 @@ We present these results in [another post](2020/03/12/towards-scalable-vss-and-d
 A **prototype implementation** is available on GitHub [here](https://github.com/alinush/libpolycrypto/).
 
 <p hidden>$$
-\def\G{\mathbb{G}}
-\def\Zp{\mathbb{Z}_p}
-\def\Ell{\mathcal{L}}
+\def\lagr{\mathcal{L}}
 $$</p>
 
 ## Preliminaries
@@ -65,16 +63,16 @@ How can we recover or _interpolate_ $\phi(X)$ from these $t$ evaluations?
 We can use *Lagrange's formula*, which says:
 
 \begin{align}
-\phi(X) &= \sum_{j\in T} \Ell_j^T(X) \phi(j)\label{eq:lagrange-sum}
+\phi(X) &= \sum_{j\in T} \lagr_j^T(X) \phi(j)\label{eq:lagrange-sum}
 \end{align}
 
-The $\Ell_j^T(X)$'s are called _Lagrange polynomials_ and are defined as:
+The $\lagr_j^T(X)$'s are called _Lagrange polynomials_ and are defined as:
 
 \begin{align}
-\Ell_j^T(X) &= \prod_{\substack{k\in T\\\\k\ne j}} \frac{X - k}{j - k}\label{eq:lagrange-poly}
+\lagr_j^T(X) &= \prod_{\substack{k\in T\\\\k\ne j}} \frac{X - k}{j - k}\label{eq:lagrange-poly}
 \end{align}
 
-The key property of these polynomials is that $\forall j\in T, \Ell_j^T(j) = 1$ and $\forall i\in T, i\ne j,\Ell_j^T(i) = 0$.
+The key property of these polynomials is that $\forall j\in T, \lagr_j^T(j) = 1$ and $\forall i\in T, i\ne j,\lagr_j^T(i) = 0$.
 
 {: .info}
 We are artificially restricting ourselves to evaluations of $\phi$ at points $\\{1,2,\dots,n\\}$ since this is the setting that arises in BLS threshold signatures.
@@ -96,28 +94,28 @@ Then, I'll introduce the quasilinear-time algorithm, adapted for the "in the exp
 
 Having identified $t$ valid signature shares $\sigma_j = H(m)^{s_j}, j\in T$, the aggregator will recover $s=\phi(0)$ but do so "in the exponent", by recovering $H(m)^{\phi(0)}=H(m)^s$.
 
-For this, the aggregator computes all the $\Ell_j^T(0)$'s by computing Equation $\ref{eq:lagrange-poly}$ at $X=0$:
+For this, the aggregator computes all the $\lagr_j^T(0)$'s by computing Equation $\ref{eq:lagrange-poly}$ at $X=0$:
 
-$$\Ell_j^T(0) = \prod_{\substack{k\in T\\\\k\ne j}} \frac{0 - k}{j - k} = \prod_{\substack{k\in T\\\\k\ne j}} \frac{k}{k - j}$$
+$$\lagr_j^T(0) = \prod_{\substack{k\in T\\\\k\ne j}} \frac{0 - k}{j - k} = \prod_{\substack{k\in T\\\\k\ne j}} \frac{k}{k - j}$$
 
 {: .error}
-Computing a single $\Ell_j^T(0)$ can be done in $\Theta(t)$ time by simply carrying out the operations above in the field $\Zp$.
-_However_, we need to compute _all_ of them: $\Ell_j^T(0), \forall j \in T$, which takes $\Theta(t^2)$ time.
+Computing a single $\lagr_j^T(0)$ can be done in $\Theta(t)$ time by simply carrying out the operations above in the field $\Zp$.
+_However_, we need to compute _all_ of them: $\lagr_j^T(0), \forall j \in T$, which takes $\Theta(t^2)$ time.
 We will describe how to reduce this time in the next subsection.
 
 The final step consists of several exponentiations in $\G_1$, which actually computes the secret key $s$ in the exponent, as per Equation \ref{eq:lagrange-sum} at $X=0$:
 
 \begin{align}
-\prod_{j\in T} \sigma_j^{\Ell_j^T(0)} &= \prod_{j\in T} \left(H(m)^{s_j}\right)^{\Ell_j^T(0)}\\\\\
-                                      &= \prod_{j\in T}       H(m)^{\Ell_j^T(0) s_j}\\\\\
-                                      &= H(m)^{\sum_{j\in T}{\Ell_j^T(0) s_j}}\\\\\
-                                      &= H(m)^{\sum_{j\in T}{\Ell_j^T(0) \phi(j)}}\\\\\
+\prod_{j\in T} \sigma_j^{\lagr_j^T(0)} &= \prod_{j\in T} \left(H(m)^{s_j}\right)^{\lagr_j^T(0)}\\\\\
+                                      &= \prod_{j\in T}       H(m)^{\lagr_j^T(0) s_j}\\\\\
+                                      &= H(m)^{\sum_{j\in T}{\lagr_j^T(0) s_j}}\\\\\
+                                      &= H(m)^{\sum_{j\in T}{\lagr_j^T(0) \phi(j)}}\\\\\
                                       &= H(m)^{\phi(0)} = H(m)^s = \sigma
 \end{align}
 
 This last step takes $\Theta(t)$ time and is sped up in practice using multi-exponentiation techniques.
 
-This naive algorithm works quite well, especially at small scales, but the performance deteriorates fast, as computing the $\Ell_j^T(0)$'s becomes very expensive.
+This naive algorithm works quite well, especially at small scales, but the performance deteriorates fast, as computing the $\lagr_j^T(0)$'s becomes very expensive.
 The figure below depicts this trend.
 
 ![Naive aggregation time for BLS threshold signatures](/pictures/bls-thresh-naive.png){: .align-center}
@@ -136,7 +134,7 @@ We used various optimizations using roots-of-unity to speed up this naive implem
 This is going to get a bit mathematical, so hold on tight.
 Everything explained here is just a slight modification of the fast polynomial interpolation techniques explained in "Modern Computer Algebra"[^vG13ModernCh10].
 
-We'll refer to $\Ell_j^T(0)$ as a _Lagrange coefficient_: this is just the Lagrange polynomial from Equation \ref{eq:lagrange-poly} evaluated at $X=0$.
+We'll refer to $\lagr_j^T(0)$ as a _Lagrange coefficient_: this is just the Lagrange polynomial from Equation \ref{eq:lagrange-poly} evaluated at $X=0$.
 Recall that the aggregator must compute all $t=|T|$ Lagrange coefficients.
 
 
@@ -157,14 +155,14 @@ Similarly, let $V_{T\setminus\\{j\\}}(X)$ have roots at all $X\in T\setminus\\{j
 
 Second, we rewrite the Lagrange polynomials using these vanishing polynomials.
 \begin{align}
-    \Ell_j^T(X) &= \prod_{\substack{k\in T\\\\k\ne j}} \frac{X - k}{j - k}\\\\\
+    \lagr_j^T(X) &= \prod_{\substack{k\in T\\\\k\ne j}} \frac{X - k}{j - k}\\\\\
                 &= \frac{\prod_{\substack{k\in T\\\\k\ne j}}(X - k)}{\prod_{\substack{k\in T\\\\k\ne j}}(j - k)}\\\\\
                 &= \frac{V_{T\setminus\\{j\\}}(X)}{V_{T\setminus\\{j\\}}(j)}
 \end{align}
 
 As a result, we can rewrite the Lagrange _coefficients_ as:
 \begin{align}
-    \Ell_j^T(0) &= \frac{V_{T\setminus\\{j\\}}(0)}{V_{T\setminus\\{j\\}}(j)}
+    \lagr_j^T(0) &= \frac{V_{T\setminus\\{j\\}}(0)}{V_{T\setminus\\{j\\}}(j)}
 \end{align}
 
 Finally, we note that computing _all_ numerators $V_{T\setminus\\{j\\}}(0)=V_T(0)/(0-j)$ can be done in $\Theta(t)$ time by:
@@ -216,7 +214,7 @@ V_T'(j) &= \sum_{k \in T} V_{T\setminus\\{k\\}}(j)\\\\\
     &= V_{T\setminus\\{j\\}}(j)
 \end{align}
 
-In other words, this means the denominator of the $j$th Lagrange coefficient $\Ell_j^T(0)$ exactly equals $V_T'(j)$, as we promised in the beginning.
+In other words, this means the denominator of the $j$th Lagrange coefficient $\lagr_j^T(0)$ exactly equals $V_T'(j)$, as we promised in the beginning.
 
 {: .info}
 If you missed the transition from Equation \ref{eq:vtprimeofj} to Equation \ref{eq:vtprimeofj-zero} recall that $V_{T\setminus\\{k\\}}(X)$ is zero for all $X$ in $T$ **except for** $k$.

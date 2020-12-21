@@ -20,12 +20,6 @@ Similarly, we'll refer to the resulting VSS and DKG protocols as _FK VSS_ and _F
 <!-- TODO: link to n\log{n} branch -->
 A prototype implementation of FK-based VSS and DKG benchmarks is available on GitHub [here](https://github.com/alinush/libpolycrypto/).
 
-<p hidden>$$
-\def\G{\mathbb{G}}
-\def\Zp{\mathbb{Z}_p}
-$$</p>
-<!--  \overset{\mathrm{def}}{=} -->
-
 ## Preliminaries
 
 Let $[n]=\\{1,2,3,\dots,n\\}$.

@@ -39,12 +39,6 @@ In this post, we'll introduce new techniques for speeding this up.
 As mentioned before, our **full paper**[^TCZplus20] can be found [here](/papers/dkg-sp2020.pdf) and will appear in IEEE S&P'20.
 A prototype implementation of our VSS and DKG benchmarks is available on GitHub [here](https://github.com/alinush/libpolycrypto/).
 
-<p hidden>$$
-\def\G{\mathbb{G}}
-\def\Zp{\mathbb{Z}_p}
-$$</p>
-<!--  \overset{\mathrm{def}}{=} -->
-
 ## Preliminaries
 
 Let $[n]=\\{1,2,3,\dots,n\\}$.

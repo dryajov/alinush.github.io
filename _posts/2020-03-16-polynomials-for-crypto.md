@@ -70,10 +70,6 @@ Otherwise, $q(X) = 0$.
 
 ### Lagrange interpolation
 
-<p hidden>
-$\newcommand{\lagr}{\mathcal{L}}$
-</p>
-
 Given $n$ pairs $(x_i, y_i)\_{i\in[n]}$, one can compute or _interpolate_ a degree $\le n-1$ polynomial $\phi(X)$ such that:
 $$\phi(x_i)=y_i,\forall i\in[n]$$ 
 

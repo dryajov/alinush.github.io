@@ -17,23 +17,15 @@ Importantly, verifers only store a succinct **digest** of the vector (e.g., a 32
 <p hidden>$$
 \def\Adv{\mathcal{A}}
 \def\Badv{\mathcal{B}}
-\def\G{\mathbb{G}}
 \def\GenGho{\mathsf{GenGroup}_?}
-\def\Gho{\G_?}
 \def\Ghosz{|\Gho|}
 \def\Ghoid{1_{\Gho}}
 \def\multirootexp{\mathsf{MultiRootExp}}
-\def\negl{\mathsf{negl}}
-\def\poly{\mathsf{poly}}
 \def\primes{\mathsf{Primes}}
 \def\QRn{\mathsf{QR}_N}
 \def\rootfactor{\mathsf{RootFactor}}
 \def\shamirtrick{\mathsf{ShamirTrick}}
-\def\Z{\mathbb{Z}}
 \def\vect#1{\mathbf{#1}}
-\def\Zn{\Z_N^*}
-\def\Zp{\Z_p^*}
-\def\Zq{\Z_q^*}
 $$</p>
 
 Below, we review _Catalano and Fiore's_ elegant VC scheme[^CF13e] built from hidden-order groups, extended with the enhancements proposed by Lai and Malavolta[^LM18] and by Campanelli et al.[^CFGplus20e]
@@ -64,7 +56,7 @@ Computing $z^{1/(ab)}$ takes $$O(\max(\vert x\vert,\vert y\vert))\ \Gho$$ operat
 To set up the VC scheme, a hidden-order group $\Gho$ with generator $g$ must be picked such that nobody knows the order of the group.
 Importantly, the RSA problem needs to be hard in this group.
 <!-- TODO: reference assumptions -->
-Typically, $\Gho = \Zn$ where $N=pq$ is picked via a secure _multi-party computation (MPC) ceremony_ such that nobody knows the factorization of $N$ (and thus nobody knows the order of $\Gho$; i.e., $\vert\Gho\vert = \phi(N)= (p-1)(q-1)$).
+Typically, $\Gho = \ZNs$ where $N=pq$ is picked via a secure _multi-party computation (MPC) ceremony_ such that nobody knows the factorization of $N$ (and thus nobody knows the order of $\Gho$; i.e., $\vert\Gho\vert = \phi(N)= (p-1)(q-1)$).
 
 Then, a collision-resistant hash function $H : [n] \rightarrow \primes^{\ell+1}$ must be fixe.
 $H$ will map each vector index $i\in [n]$ to a prime $e_i = H(i)$ such that $2^\ell < e_i < 2^{\ell+1}$ where $\ell$ is the maximum size in bits of a vector element $v_i$.

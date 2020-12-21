@@ -43,22 +43,14 @@ You can also see a quick comparison in our [zkStudyClub slides](https://github.c
 <p hidden>$$
 \def\Adv{\mathcal{A}}
 \def\Badv{\mathcal{B}}
-\def\G{\mathbb{G}}
 \def\GenGho{\mathsf{GenGroup}_?}
-\def\Gho{\G_?}
 \def\Ghosz{|\Gho|}
 \def\Ghoid{1_{\Gho}}
-\def\negl{\mathsf{negl}}
-\def\poly{\mathsf{poly}}
 \def\primes{\mathsf{Primes}}
 \def\QRn{\mathsf{QR}_N}
 \def\multirootexp{\mathsf{MultiRootExp}}
 \def\rootfactor{\mathsf{RootFactor}}
-\def\Z{\mathbb{Z}}
 \def\vect#1{\mathbf{#1}}
-\def\Zn{\Z_N^*}
-\def\Zp{\Z_p^*}
-\def\Zq{\Z_q^*}
 $$</p>
 
 We often use the following notation:
@@ -67,7 +59,7 @@ We often use the following notation:
  - $[n] = \\{1,2,\dots, n\\}$
  - We denote a vector using a **bolded** variable $\vect{v} = [v_1, \dots, v_n]$
  - $\Gho$ denotes the hidden-order group our constructions use 
-    + e.g., $$\Gho = \Zn =\{a \mathrel\vert \gcd(a,N) = 1\}$$
+    + e.g., $$\Gho = \ZNs =\{a \mathrel\vert \gcd(a,N) = 1\}$$
  - Let $D$ be a dictionary over a set of keys $K$ that maps each key $k\in K$ to its value $v = D(k)$
  - We sometimes use $k\in D$ to indicate that key $k$ has some value in the dictionary
  - We sometimes use $(k,v)\in D$ notation to indicate that key $k$ has value $v$ in the dictionary

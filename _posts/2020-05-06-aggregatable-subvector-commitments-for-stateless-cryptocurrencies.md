@@ -28,16 +28,6 @@ The key ingredient was turning two commitments to $A(X)/(X-i)$ and $A(X)/(X-j)$ 
 This post explains this technique and how to make it work by taking care of all details (e.g., making update keys verifiable, computing them from the KZG public params efficiently, etc.).
 
 <p hidden>$$
-\def\G{\mathbb{G}}
-\def\Zp{\mathbb{Z}_p}
-\newcommand{\bezout}{B\'ezout\xspace}
-\newcommand{\G}{\mathbb{G}}
-\newcommand{\Gho}{\mathbb{G}_{?}}
-\newcommand{\Fp}{\mathbb{F}_p}
-\newcommand{\GT}{\mathbb{G}_T}
-\newcommand{\Zp}{\mathbb{Z}_p}
-\newcommand{\poly}{\mathsf{poly}}
-\newcommand{\lagr}{\mathcal{L}}
 \newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\prk}{\mathsf{prk}}
 \newcommand{\vrk}{\mathsf{vrk}}

@@ -16,22 +16,14 @@ For example, the prover can prove membership of elements in the set to verifiers
 <p hidden>$$
 \def\Adv{\mathcal{A}}
 \def\Badv{\mathcal{B}}
-\def\G{\mathbb{G}}
 \def\GenGho{\mathsf{GenGroup}_?}
-\def\Gho{\G_?}
 \def\Ghosz{|\Gho|}
 \def\Ghoid{1_{\Gho}}
-\def\negl{\mathsf{negl}}
-\def\poly{\mathsf{poly}}
 \def\primes{\mathsf{Primes}}
 \def\QRn{\mathsf{QR}_N}
 \def\multirootexp{\mathsf{MultiRootExp}}
 \def\rootfactor{\mathsf{RootFactor}}
-\def\Z{\mathbb{Z}}
 \def\vect#1{\mathbf{#1}}
-\def\Zn{\Z_N^*}
-\def\Zp{\Z_p^*}
-\def\Zq{\Z_q^*}
 $$</p>
 
 The _digest_ of the set is often referred to as the _accumulator_ of the set.

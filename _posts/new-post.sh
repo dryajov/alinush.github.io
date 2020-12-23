@@ -39,7 +39,7 @@ fi
 echo "Creating file $mdfile..."
 templ=$(cat $notesdir/templ.md | sed "s/insert-title-here/$title/g")
 #fulldate=`date "+%A, %B %-d, %Y, %-I:%M%p, at"`
-echo -e "$templ" > "$notepath"
+echo "$templ" > "$notepath"
 
 hash_init=`sha256sum $notepath`
 vim "$notepath"

@@ -7,7 +7,8 @@ published: false
 #    nav: cryptomat
 ---
 
-<!-- TODO: Write an intro paragraph here -->
+{: .info}
+**tl;dr:** Write an intro paragraph here.
 
 <!--more-->
 
@@ -16,3 +17,7 @@ published: false
 \def\Badv{\mathcal{B}}
 \def\vect#1{\mathbf{#1}}
 $$</p>
+
+---
+
+{% include_relative bib.md %}

@@ -1,7 +1,7 @@
 ---
 tags: polynomials verifiable-secret-sharing vss distributed-key-generation dkg kate-zaverucha-goldberg kzg polycommit fast-fourier-transform fft cryptography
 title: A Step Closer To Scalable Verifiable Secret Sharing (and Distributed Key Generation)
-date: 2020-03-21 14:00:00
+date: 2021-01-12 14:00:00
 published: false
 ---
 {: .info}
@@ -17,8 +17,7 @@ This post is a _continuation to our [previous post](https://alinush.github.io/20
 Throughout this post, we'll refer to proofs computed using the Feist and Khovratovich[^FK20] technique as _FK proofs_.
 Similarly, we'll refer to the resulting VSS and DKG protocols as _FK VSS_ and _FK DKG_, respectively.
 
-<!-- TODO: link to n\log{n} branch -->
-A prototype implementation of FK-based VSS and DKG benchmarks is available on GitHub [here](https://github.com/alinush/libpolycrypto/).
+A prototype implementation of FK-based VSS and DKG benchmarks is available on the `fk` branch of `libpolycrypto` on GitHub [here](https://github.com/alinush/libpolycrypto/tree/fk).
 
 ## Preliminaries
 
@@ -27,9 +26,9 @@ Let $p$ be a sufficiently large prime that denotes the order of our groups.
 
 In this post, beyond basic group theory for cryptographers[^KL15] and basic polynomial arithmetic, I will assume you are familiar with a few concepts:
 
- - **Bilinear maps**[^GPS08]. Specifically, $\exists$ a bilinear map $e : \G_1 \times \G_2 \rightarrow \G_T$ such that:
-    - $\forall u\in \G_1,v\in \G_2, a\in \Zp, b\in \Zp, e(u^a, v^b) = e(u,v)^{ab}$
-    - $e(g_1,g_2)\ne 1_T$ where $g_1,g_2$ are the generators of $\G_1$ and $\G_2$ respectively and $1_T$ is the identity of $\G_T$
+ - **Bilinear maps**[^GPS08]. Specifically, $\exists$ a bilinear map $e : \Gr_1 \times \Gr_2 \rightarrow \Gr_T$ such that:
+    - $\forall u\in \Gr_1,v\in \Gr_2, a\in \Zp, b\in \Zp, e(u^a, v^b) = e(u,v)^{ab}$
+    - $e(g_1,g_2)\ne 1_T$ where $g_1,g_2$ are the generators of $\Gr_1$ and $\Gr_2$ respectively and $1_T$ is the identity of $\Gr_T$
  - **KZG**[^KZG10a] **polynomial commitments** (see [previous post][prevpost]),
  - The **Fast Fourier Transform (FFT)**[^CLRS09] applied to polynomials. Specifically,
     - Suppose $\Zp$ admits a primitive _root of unity_ $\omega$ of order $n$ (i.e., $n \mid p-1$)

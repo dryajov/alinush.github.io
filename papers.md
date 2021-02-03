@@ -7,7 +7,7 @@ titles:
 key: page-papers
 ---
 
-**Aggregatable Distributed Key Generation**, Kobi Gurkan, Philipp Jovanovic, Mary Maller, Sarah Meiklejohn, Gilad Stern, Alin Tomescu, _in submission_, (blogpost will come soon), <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2021/005.pdf"><i class="fas fa-download"></i>PDF</a>, [Code](https://github.com/https://github.com/kobigurk/aggregatable-dkg)
+**Aggregatable Distributed Key Generation**, Kobi Gurkan, Philipp Jovanovic, Mary Maller, Sarah Meiklejohn, Gilad Stern, Alin Tomescu, _EUROCRYPT 2021_, (blogpost will come soon), <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2021/005.pdf"><i class="fas fa-download"></i>PDF</a>, [Code](https://github.com/https://github.com/kobigurk/aggregatable-dkg)
 
 **How to compute all Pointproofs**, Alin Tomescu, short note in _Cryptology ePrint Archive_, <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2020/1516.pdf"><i class="fas fa-download"></i>PDF</a>, [LaTeX](https://github.com/alinush/pointproofs-note), [Code](https://github.com/alinush/libvectcom)
 

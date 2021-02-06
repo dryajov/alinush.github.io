@@ -6,7 +6,7 @@ sidebar:
     nav: cryptomat
 ---
 
-Kate, Zaverucha and Goldberg introduced a constant-sized polynomial commitment scheme in 2010[^KZG10b].
+Kate, Zaverucha and Goldberg introduced a constant-sized polynomial commitment scheme in 2010[^KZG10e].
 We refer to this scheme as **KZG** and quickly introduce it below.
 
 **Prerequisites:**
@@ -37,7 +37,8 @@ Since it is just one group element, the commitment is _constant-sized_.
 
 ## Evaluation proofs
 
-To prove an evaluation $\phi(a) = y$, a _quotient_ is computed in $O(d)$ time: 
+To prove an evaluation $\phi(a) = y$, a _quotient polynomial_ is computed in $O(d)$ time:
+
 $$q(X) = \frac{\phi(X) - y}{X - a}$$
 
 Then, the _constant-sized_ **evaluation proof** is:
@@ -62,27 +63,51 @@ In other words, it checks that the [polynomial remainder theorem](/2020/03/16/po
 
 ## Batch proofs
 
-Can prove multiple evaluations $(\phi(a_i) = y_i)_{i\in I}$ using a constant-sized **KZG batch proof** $\pi_I = g^{q_I(\tau)}$, where:
+One can prove multiple evaluations $(\phi(e_i) = y_i)_{i\in I}$ using a constant-sized **KZG batch proof** $\pi_I = g^{q_I(\tau)}$, where:
 
 \begin{align}
 \label{eq:batch-proof-rel}
 q_I(X) &=\frac{\phi(X)-R_I(X)}{A_I(X)}\\\\\
-A_I(X) &=\prod_{i\in I} (X - a_i)\\\\\
-R_I(a_i) &= y_i,\forall i\in I\\\\\
+A_I(X) &=\prod_{i\in I} (X - e_i)\\\\\
+R_I(e_i) &= y_i,\forall i\in I\\\\\
 \end{align}
 
-$R_I(X)$ can be interpolated via Lagrange interpolation as:
-$$R_I(X)=\sum_{i\in I} y_i \prod_{j\in I,j\ne i}\frac{X - a_j}{a_i - a_j}$$
-<!-- TODO: Lagrange interpolation background in cryptomat -->
+$R_I(X)$ can be interpolated via [Lagrange interpolation](/2020/03/16/polynomials-for-crypto.html#lagrange-interpolation) in $O(\vert I\vert\log^2{\vert I\vert})$ time[^vG13ModernCh10] as:
+
+\begin{align}
+R_I(X)=\sum_{i\in I} y_i \prod_{j\in I,j\ne i}\frac{X - e_j}{e_i - e_j}
+\end{align}
+
+$A_I(X)$ can be computed in $O(\vert I \vert \log^2{\vert I \vert})$ time via a **subproduct tree** in $O(\vert I\vert\log^2{\vert I\vert})$ time[^vG13ModernCh10], as depicted below (for $\vert I \vert = 8$).
+
+<img src="/pictures/accumulator-subproduct-tree.png" />
+
+The key observation is that each node in the subproduct tree multiplies the polynomials stored in its two children nodes.
+This way, the root polynomial will be exactly $A_I(X)$.
+If FFT-based multiplication is used, the time to compute a subproduct tree of size $n$ is:
+
+\begin{align}
+T(n) &= 2T(n/2) + O(n\log{n}\\\\\
+     &= O(n\log^2{n})
+\end{align}
+
+{: .info}
+I believe doing this faster for _arbitrary_ points $e_i$ is not possible, but I would be happy to be contradicted!
 
 ### Verifying a batch proof
 
-The verifier who has the commitment $c$, the evaluations $(a_i, y_i)_{i\in I}$ and a batch proof $\pi_I=g^{q_I(\tau)}$ can verify them as follows.
+The verifier who has the commitment $c$, the evaluations $(e_i, y_i)_{i\in I}$ and a batch proof $\pi_I=g^{q_I(\tau)}$ can verify them as follows.
  
- 1. First, he interpolates the **accumulator polynomial** $$A_I(X)=\prod_{i\in I} (X-a_i)$$ via a subproduct tree in $O(\vert I\vert\log^2{\vert I\vert})$ time[^vG13ModernCh10].
-    Then, commits to it as $g^{A_I(\tau)}$ in $O(\vert I \vert)$ time.
- 2. Second, he interpolates $R_I(X)$ s.t. $R_I(a_i)=y_i,\forall i \in I$ via fast Lagrange interpolation in $O(\vert I\vert\log^2{\vert I\vert})$ time[^vG13ModernCh10].
-    Then, commits to it as $g^{R_I(\tau)}$ in $O(\vert I \vert)$ time.
+ 1. First, he interpolates the **accumulator polynomial** $$A_I(X)=\prod_{i\in I} (X-e_i)$$ as discussed above.
+    Then, commits to in $O(\vert I \vert)$ time:
+    \begin{align}
+        a &= g^{A_I(\tau)}
+    \end{align}
+ 2. Second, he interpolates $R_I(X)$ s.t. $R_I(e_i)=y_i,\forall i \in I$ as discussed above.
+    Then, commits to in $O(\vert I \vert)$ time:
+    \begin{align}
+        r &= g^{R_I(\tau)}
+    \end{align}
  3. Third, he checks Equation \ref{eq:batch-proof-rel} holds at $X=\tau$ using two pairings: $e(c / r, g) = e(\pi_I, a)$.
 
 Note that:
@@ -107,10 +132,4 @@ Here's a few we've blogged about in the past:
  - Vector Commitments (VC) schemes [with $O(\log{n})$-sized proofs](/2020/03/12/towards-scalable-vss-and-dkg.html) or [with $O(1)$-sized proofs](/2020/05/06/aggregatable-subvector-commitments-for-stateless-cryptocurrencies.html)
  - [Range proofs](/2020/03/03/range-proofs-from-polynomial-commitments-reexplained.html)
 
-### References
-
-[^KZG10b]: **Polynomial commitments**, by Kate, Aniket and Zaverucha, Gregory M and Goldberg, Ian, 2010, [[URL]](https://pdfs.semanticscholar.org/31eb/add7a0109a584cfbf94b3afaa3c117c78c91.pdf)
-[^BCGplus15]: **Secure Sampling of Public Parameters for Succinct Zero Knowledge Proofs**, by E. Ben-Sasson and A. Chiesa and M. Green and E. Tromer and M. Virza, *in 2015 IEEE Symposium on Security and Privacy*, 2015
-[^BGG18]: **A Multi-party Protocol for Constructing the Public Parameters of the Pinocchio zk-SNARK**, by Bowe, Sean and Gabizon, Ariel and Green, Matthew D., *in Financial Cryptography and Data Security*, 2019
-[^BGM17]: **Scalable Multi-party Computation for zk-SNARK Parameters in the Random Beacon Model**, by Sean Bowe and Ariel Gabizon and Ian Miers, 2017, [[URL]](https://eprint.iacr.org/2017/1050)
-[^vG13ModernCh10]: **Fast polynomial evaluation and interpolation**, by von zur Gathen, Joachim and Gerhard, Jurgen, *in Modern Computer Algebra*, 2013
+{% include_relative refs.md %}

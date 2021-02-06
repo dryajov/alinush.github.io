@@ -119,8 +119,16 @@ e(g^{\phi(\tau) - R_I(\tau)}, g) &= e(g,g)^{q_I(\tau) A_I(\tau)}\Leftrightarrow\
 \end{align}
 
 <!-- TODO: ## Commitment and proof homomorphism -->
-<!-- TODO: ## Aggregation of proofs -->
+
+## Aggregation of proofs
+
+For now, we discuss proof aggregation in [a different blog post on building vector commitments (VCs)](/2020/05/06/aggregatable-subvector-commitments-for-stateless-cryptocurrencies.html#aggregating-proofs-into-subvector-profs) from KZG.
+
+<!-- TODO: proof updates -->
+
 <!-- TODO: ## Information-theoretic hiding -->
+
+<!-- TODO: ### security proofs -->
 
 ## Applications
 

@@ -50,7 +50,7 @@ Note that this leverages the [polynomial remainder theorem](/2020/03/16/polynomi
 
 ### Verifying an evaluation proof
 
-A verifier who has the commitment $c=g^{\phi(\tau)}$ and the proof $\pi=g^{q(\tau)}$ can verify it in _constant-time_ using two pairings:
+A verifier who has the commitment $c=g^{\phi(\tau)}$, the evaluation $y=\phi(a)$ and the proof $\pi=g^{q(\tau)}$ can verify the evaluation in _constant-time_ using two pairings:
 
 \begin{align}
 e(c / g^y, g) &= e(\pi, g^\tau / g^a) \Leftrightarrow\\\\\
@@ -64,7 +64,7 @@ In other words, it checks that the [polynomial remainder theorem](/2020/03/16/po
 
 ## Batch proofs
 
-One can prove multiple evaluations $(\phi(e_i) = y_i)_{i\in I}$ for _arbitrary_ points $e_i$ using a constant-sized **KZG batch proof** $\pi_I = g^{q_I(\tau)}$, where:
+One can prove multiple evaluations $(\phi(e\_i) = y\_i)\_{i\in I}$ for _arbitrary_ points $e_i$ using a constant-sized **KZG batch proof** $\pi_I = g^{q_I(\tau)}$, where:
 
 \begin{align}
 \label{eq:batch-proof-rel}
@@ -147,6 +147,6 @@ Here's a few we've blogged about in the past:
 
 #### Acknowledgements
 
-Many thanks to [Shravan Srinivasan](http://www.cs.umd.edu/~sshravan/) for helping improve this post.
+Many thanks to [Shravan Srinivasan](http://sshravan.github.io/) for _really_ helping improve this post.
 
 {% include_relative refs.md %}

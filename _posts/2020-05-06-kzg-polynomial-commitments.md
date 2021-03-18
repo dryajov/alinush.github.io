@@ -30,7 +30,7 @@ This is useful when you want to safely re-use a pre-generated set of public para
 
 ## Commitments
 
-Commitment to $\phi(X)=\prod_{i\in[0,d]} \phi_i X^i$ is $c=g^{\phi(\tau)}$ computed as:
+Commitment to $\phi(X)=\sum_{i\in[0,d]} \phi_i X^i$ is $c=g^{\phi(\tau)}$ computed as:
 
 $$c=\prod_{i\in[0,\deg{\phi}]} \left(g^{\tau^i}\right)^{\phi_i}$$
 
@@ -147,6 +147,6 @@ Here's a few we've blogged about in the past:
 
 #### Acknowledgements
 
-Many thanks to [Shravan Srinivasan](http://sshravan.github.io/) for _really_ helping improve this post.
+Many thanks to [Shravan Srinivasan](http://sshravan.github.io/) and [Philipp Jovanovic](https://philipp.jovanovic.io/) for _really_ helping improve this post.
 
 {% include_relative refs.md %}

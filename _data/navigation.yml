@@ -73,6 +73,8 @@ header:
 cryptomat:
   - title: Number Theory
     children:
+      - title: Basic Group Theory
+        url: /2021/04/15/basic-group-theory.html
       - title: Linear Diophantine Equations
         url: /2020/11/23/Linear-Diophantine-Equations.html
   #- title: Group Theory

@@ -8,6 +8,16 @@ sidebar:
     nav: cryptomat
 ---
 
+<!--
+**TODO:**
+
+ - Define $\QRn$
+     + Include Quadratic Residuosity Assumption (QRA) (see [here](https://en.wikipedia.org/wiki/Quadratic_residuosity_problem) and [here](https://crypto.stanford.edu/pbc/notes/numbertheory/qr.html))
+ - Define **generic group model (GGM)** and **generic adversary**[^DK02] 
+ - _Blum integers_ as defined by Hastad et al.[^HSS93]
+ - One-more RSA assumptions
+-->
+
 In this post, we summarize some of the cryptographic hardness assumptions used in **hidden-order groups**.
 
 <!--more-->
@@ -41,15 +51,6 @@ For example, to say that _"the Strong RSA assumption implies the order assumptio
 
 
 All of our probability clauses $\Pr[\dots]=\negl(\lambda)$ below would more formally be stated as "for all _polynomial probabilistic time (PPT)_ adversaries $\Adv$, there exists a negligible function $\negl(\cdot)$ such that $\Pr[\dots] = \negl(\lambda)$.
-
-<!--
-**TODO:**
-
- - Define $\QRn$
-     + Include Quadratic Residuosity Assumption (QRA) (see [here](https://en.wikipedia.org/wiki/Quadratic_residuosity_problem) and [here](https://crypto.stanford.edu/pbc/notes/numbertheory/qr.html))
- - Define **generic group model (GGM)** and **generic adversary**[^DK02] 
- - _Blum integers_ as defined by Hastad et al.[^HSS93]
--->
 
 ## Assumptions
 

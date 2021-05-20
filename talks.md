@@ -7,6 +7,12 @@ titles:
 key: page-talks
 ---
 
+#### Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments (VCs)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XyxWH008tzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Axelar [slides here](https://docs.google.com/presentation/d/1vJltIEpm1xvttr41OerZss08qI5_SLr1tFo9BXN1wMc/edit?usp=sharing)
+
 #### Authenticated Data Structures for Stateless Validation and Transparency Logs
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TuZiEb_SLx0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

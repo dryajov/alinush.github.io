@@ -14,7 +14,7 @@ The question of scaling threshold signatures came to us at [VMware Research](htt
 
 We recently published our work[^TCZplus20] in [IEEE S&P'20](https://www.ieee-security.org/TC/SP2020/).
 Our work also address how to scale the necessary _distributed key generation (DKG)_ protocol needed to bootstrap a BLS threshold signature scheme.
-We present these results in [another post](2020/03/12/towards-scalable-vss-and-dkg.html).
+We present these results in [another post](/2020/03/12/towards-scalable-vss-and-dkg.html).
 
 A **prototype implementation** is available on GitHub [here](https://github.com/alinush/libpolycrypto/).
 

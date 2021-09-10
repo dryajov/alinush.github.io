@@ -12,6 +12,6 @@ fi
 
 # NOTE(Alin): For some reason, jekyll gets confused when overwriting the symlink in _site/drafts/refs.md, so I have to delete it here 
 
-rm $scriptdir/_site/drafts/refs.md
+rm -f $scriptdir/_site/drafts/refs.md
 
 bundle exec jekyll serve -P $1

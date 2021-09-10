@@ -149,4 +149,4 @@ Here's a few we've blogged about in the past:
 
 Many thanks to [Shravan Srinivasan](http://sshravan.github.io/) and [Philipp Jovanovic](https://philipp.jovanovic.io/) for _really_ helping improve this post.
 
-{% include_relative refs.md %}
+{% include refs.md %}

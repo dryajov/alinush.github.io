@@ -20,4 +20,4 @@ $$</p>
 
 ---
 
-{% include_relative refs.md %}
+{% include refs.md %}

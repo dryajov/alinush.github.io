@@ -71,4 +71,4 @@ We will gradually build the quotient $q_i$.
 
 ---
 
-{% include_relative refs.md %}
+{% include refs.md %}

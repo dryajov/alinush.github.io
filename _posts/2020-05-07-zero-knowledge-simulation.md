@@ -33,4 +33,4 @@ See:
 
 ---
 
-{% include_relative bib.md %}
+{% include bib.md %}

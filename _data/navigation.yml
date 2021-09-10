@@ -88,8 +88,23 @@ cryptomat:
 
       - title: RSA Accumulators
         url: /2020/11/24/RSA-accumulators.html
+  - title: Vector Commitments (VCs)
+    children:
+    #  - title: Libert-Yung
+    #    url: 
 
-      - title: Catalano-Fiore Vector Commitments
+    #  - title: Kate-Zaverucha-Goldberg
+    #    url: 
+    #
+    #  - title: aSVC
+    #    url: 
+      - title: Feist-Khovratovich (FK) precomputation
+        url: /drafts/2021-06-17-Feist-Khovratovich-technique-for-computing-KZG-proofs-fast.html # TODO: finalize and rename
+
+      - title: Pointproofs
+        url: /drafts/2021-09-10-Pointproofs-Vector-Commitments.html # TODO: finalize and rename
+  
+      - title: Catalano-Fiore VCs
         url: /2020/11/24/Catalano-Fiore-Vector-Commitments.html
   - title: Polynomials
     children:

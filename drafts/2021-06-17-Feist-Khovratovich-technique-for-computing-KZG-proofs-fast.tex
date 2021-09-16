@@ -1,0 +1,39 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{xcolor}
+
+\definecolor{myBlueColor}{HTML}{268BD2}
+\definecolor{myYellowColor}{HTML}{B58900}
+\definecolor{myGreenColor}{HTML}{859900}
+\definecolor{myRedColor}{HTML}{DC322F}
+\newcommand{\myblue}[1]{\textcolor{myBlueColor}{#1}}
+\newcommand{\myred}[1]{\textcolor{myRedColor}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\myyellow}[1]{\textcolor{myYellowColor}{#1}}
+\newcommand{\mygray}[1]{\textcolor{gray}{#1}}
+\newcommand{\mygreen}[1]{\textcolor{myGreenColor}{#1}}
+
+\definecolor{myPinkColor}{HTML}{D33682}
+\newcommand{\mypink}[1]{\textcolor{myPinkColor}{#1}}
+
+
+\begin{document}
+\begin{align*}\def\arraycolsep{.35em}
+\def\arraystretch{1.2}
+ \begin{array}{cccccccc|c}
+     & f_3 X^3 & + & f_2 X^2 & + & f_1 X & + & f_0 & X-\omega^i\\
+    \cline{9-9}
+    -& (\mygreen{f_3} X^3 & - & \omega^i\mygreen{f_3}X^2) & & & & & \mygreen{f_3} X^2 + {}\\
+    \cline{1-4}
+     & &   & (\omega^i \mygreen{f_3} + f_2)X^2 & + & f_1 X & + & f_0 & {} + \myblue{(\omega^i f_3 + f_2)}X + {}\\
+     & & - & \big(\myblue{(\omega^i f_3 + f_2)}X^2 & - & (\myblue{\omega}^{2\myblue{i}} \myblue{f_3} + \omega^i \myblue{f_2})X\big) & & & {} + \mypink{(f_1 + \omega^i f_2 + \omega^{2i} f_3)}\\
+    \cline{3-6}
+     & &   & &   & (f_1  + \omega^i \myblue{f_2} + \myblue{\omega}^{2\myblue{i}} \myblue{f_3})X & + & f_0\\
+     & &   & & - & \big(\mypink{(f_1 + \omega^i f_2 + \omega^{2i} f_3)}X & - & \omega^i\mypink{f_1} + \omega^{2\mypink{i}} \mypink{f_2} + \omega^{3\mypink{i}} \mypink{f_3}\big)\\
+    \cline{5-8}
+     & &   & &   & & & \sum_{j=0}^3 (\omega^i)^j f_j = f(\omega^i)
+ \end{array}\end{align*}
+\end{document}

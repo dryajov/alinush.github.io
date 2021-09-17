@@ -1,7 +1,14 @@
 ---
 layout: article
 tags:
+- vc
 - vector-commitments
+- kzg
+- kate-zaverucha-goldberg 
+- bilinear maps
+- toeplitz
+- fft
+- fast-fourier-transform
 title: Feist-Khovratovich technique for computing KZG proofs fast
 #published: false
 sidebar:
@@ -10,7 +17,7 @@ sidebar:
 
 {: .info}
 **tl;dr:** Given a polynomial $f(X)$ of degree $m$, can we compute all $n$ [KZG](/2020/05/06/kzg-polynomial-commitments.html) proofs for $f(\omega^k), k\in[0,n-1]$ in $O(n\log{n})$ time, where $\omega$ is a primitive $n$th root of unity?
-Dankrad Feist and Dmitry Khovratovich give a resounding 'yes!'
+Dankrad Feist and Dmitry Khovratovich[^FK20] give a resounding 'yes!'
 
 <!--more-->
 
@@ -43,27 +50,36 @@ Notation:
  - we have $q$-SDH public parameters $\left(g, g^\tau,g^{\tau^2},\dots,g^{\tau^q}\right)$, for $q \le n$
  - we work with polynomials in $\Zp[X]$ of degree $\le n$
 
+## Related work
+
+Other works that give related techniques to compute proofs fast in KZG-like polynomial commitments are:
+
+ - **Authenticated multipoint evaluation trees (AMTs)** (see paper[^TCZplus20] and [blogpost][amt])
+ - **"How to compute all Pointproofs"** (see paper[^Tome20How]), much inspired by Feist and Khovratovich's technique explained in this blogpost
+
 ## Refresher: Computing $n$ different KZG proofs
 
 Let $f(X)$ be a polynomial with coefficients $f_i$:
 
-\begin{align}
+\begin{align\*}
     f(X) &= f_m X^m + f_{m-1} X^{m-1} + \cdots f_1 X + f_0\\\\\
          &= \sum_{i\in[0,m]} f_i X^i
-\end{align}
+\end{align\*}
 
-First, [recall that](/2020/05/06/kzg-polynomial-commitments.html) a KZG **evaluation proof** $\pi_i$ for $f(\omega^i)$ is a KZG commitment to a **quotient polynomial** $Q_i(X) = \frac{f(X) - f(\omega^i)}{X-\omega^i}$:
-\begin{align}
+[Recall that](/2020/05/06/kzg-polynomial-commitments.html) a KZG **evaluation proof** $\pi_i$ for $f(\omega^i)$ is a KZG commitment to a **quotient polynomial** $Q_i(X) = \frac{f(X) - f(\omega^i)}{X-\omega^i}$:
+\begin{align\*}
     \pi_i = g^{Q_i(\tau)} = g^{\frac{f(\tau) - f(\omega^i)}{\tau-\omega^i}}
-\end{align}
+\end{align\*}
 
-Second, what if we want to compute **all** $\pi_i, i\in[0, n)$?
+Computing such a proof takes $O(m)$ time!
 
-If done naively, each $\pi_i$ takes $O(m)$ time, so all $\pi_i$'s take $O(nm)$, which is **expensive!**
+**But what if we want to compute all** $\pi_i, i\in[0, n)$?
+
+If done naively, this would take $O(nm)$ time, which is **too expensive!**
 
 {: .warning}
 **Lower bound?** 
-Indeed, isn't this $O(nm)$ time complexity inherent? After all, to compute $\pi_i$ don't we first need to compute $Q_i(X)$, which takes $O(m)$ time?
+Is this $O(nm)$ time complexity inherent? After all, to compute $\pi_i$ don't we first need to compute $Q_i(X)$, which takes $O(m)$ time?
 
 Fortunately, Feist and Khovratovich observe that the $Q_i(X)$'s are algebraically-related and so are their KZG commitments $\pi_i$!
 As a result, they observe that computing all $\pi_i$'s does **not** require computing all $Q_i$'s.
@@ -126,15 +142,15 @@ Note that the $t_i$'s are a function of $f_m, f_{m-1},\dots, f_1$, but not of $f
 Next, let us expand Equations \ref{eq:div-coeffs-1} and \ref{eq:div-coeffs-2} above and get a better sense of the relationship between KZG quotient polynomials:
 \begin{align}
         \color{green}{t_{m-1}} &= \underline{f_m}\\\\\
-        \color{blue}{t_{m-2}} &= f_{m-1} + \omega^i \cdot \color{green}{t_{m-1}} =\\\\\
+        \color{blue}{t_{m-2}} &= f_{m-1} + \omega^i \cdot \color{green}{t_{m-1}} =\nonumber\\\\\
                 &= \underline{f_{m-1} + \omega^i \cdot f_m}\\\\\
-        \color{red}{t_{m-3}} &= f_{m-2} + \omega^i \cdot \color{blue}{t_{m-2}}\\\\\
-                &= f_{m-2} + \omega^i \cdot (f_{m-1} + \omega^i \cdot f_m)\\\\\
+        \color{red}{t_{m-3}} &= f_{m-2} + \omega^i \cdot \color{blue}{t_{m-2}}\nonumber\\\\\
+                &= f_{m-2} + \omega^i \cdot (f_{m-1} + \omega^i \cdot f_m)\nonumber\\\\\
                 &= \underline{f_{m-2} + \omega^i \cdot f_{m-1} + \omega^{2i} \cdot f_m}\\\\\
-        t_{m-4} &= f_{m-3} + \omega^i \cdot \color{red}{t_{m-3}}\\\\\
-                &= f_{m-3} + \omega^i \cdot (f_{m-2} + \omega^i \cdot f_{m-1} + \omega^{2i} \cdot f_m)\\\\\
+        t_{m-4} &= f_{m-3} + \omega^i \cdot \color{red}{t_{m-3}}\nonumber\\\\\
+                &= f_{m-3} + \omega^i \cdot (f_{m-2} + \omega^i \cdot f_{m-1} + \omega^{2i} \cdot f_m)\nonumber\\\\\
                 &= \underline{f_{m-3} + \omega^i \cdot f_{m-2} + \omega^{2i} \cdot f_{m-1} + \omega^{3i} \cdot f_m}\\\\\ 
-                &\hspace{.55em}\vdots\\\\\
+                &\hspace{.55em}\vdots\nonumber\\\\\
         %  t_{j} &= f_{j+1} + \omega^i \cdot t_{j+1}, \forall j \in [0, m-1)\\\\\
         %        & \vdots\\\\\
             t_1 &= \underline{f_2 + \omega^i \cdot f_3 + \omega^{2i} \cdot f_4 + \dots + \omega^{(m-2)i} \cdot f_m}\\\\\
@@ -143,28 +159,33 @@ Next, let us expand Equations \ref{eq:div-coeffs-1} and \ref{eq:div-coeffs-2} ab
 As you can see above, the quotient polynomial $Q_i(X)$ obtained when dividing $f(X)$ by $X-\omega^i$ is:
 \begin{align}
     Q_i(X) &= f_m \cdot X^{m-1} + {}\\\\\
-           &+ \left(f_{m-1} + \omega^i \cdot f_m\right) \cdot X^{m-2} + {}\\\\\
-           &+ \left(f_{m-2} + \omega^i \cdot f_{m-1} + \omega^{2i} \cdot f_m\right) \cdot X^{m-3} + {}\\\\\
-           &+ \left(f_{m-3} + \omega^i \cdot f_{m-2} + \omega^{2i} \cdot f_{m-1} + \omega^{3i} \cdot f_m\right) \cdot X^{m-4} + {}\\\\\ 
-           &+ \dots + {}\\\\\ 
-           &+ \left(f_2 + \omega^i \cdot f_3 + \omega^{2i} \cdot f_4 + \dots + \omega^{(m-2)i} \cdot f_m\right) \cdot X + {}\\\\\
-           &+ \left(f_1 + \omega^i \cdot f_2 + \omega^{2i} \cdot f_3 + \dots + \omega^{(m-1)i} \cdot f_m\right)
+           &+ \left(f_{m-1} + \omega^i \cdot f_m\right) \cdot X^{m-2} + {}\nonumber\\\\\
+           &+ \left(f_{m-2} + \omega^i \cdot f_{m-1} + \omega^{2i} \cdot f_m\right) \cdot X^{m-3} + {}\nonumber\\\\\
+           &+ \left(f_{m-3} + \omega^i \cdot f_{m-2} + \omega^{2i} \cdot f_{m-1} + \omega^{3i} \cdot f_m\right) \cdot X^{m-4} + {}\nonumber\\\\\ 
+           &+ \dots + {}\nonumber\\\\\ 
+           &+ \left(f_2 + \omega^i \cdot f_3 + \omega^{2i} \cdot f_4 + \dots + \omega^{(m-2)i} \cdot f_m\right) \cdot X + {}\nonumber\\\\\
+           &+ \left(f_1 + \omega^i \cdot f_2 + \omega^{2i} \cdot f_3 + \dots + \omega^{(m-1)i} \cdot f_m\right)\nonumber
 \end{align}
 Factoring out the roots of unity, we can rearrange this as follows:
 \begin{align}
+    \label{eq:HX}
     Q_i(X) &= \left(f_m X^{m-1} + f_{m-1} X^{m-2} + \dots + f_1\right) (\omega^i)^0 + {}\\\\\
-           &+ \left(f_m X^{m-2} + f_{m-1} X^{m-3} + \dots + f_2\right) (\omega^i)^1 + {}\\\\\
-           &+ \left(f_m X^{m-3} + f_{m-1} X^{m-4} + \dots + f_3\right) (\omega^i)^2 + {}\\\\\
-           &+ \dots + {}\\\\\
-           &+ \left(f_m X + f_{m-1}\right) (\omega^i)^{m-2} + {}\\\\\
-           &+ \left(f_m \right) (\omega^i)^{m-1}
+           &+ \left(f_m X^{m-2} + f_{m-1} X^{m-3} + \dots + f_2\right) (\omega^i)^1 + {}\nonumber\\\\\
+           &+ \left(f_m X^{m-3} + f_{m-1} X^{m-4} + \dots + f_3\right) (\omega^i)^2 + {}\nonumber\\\\\
+           &+ \dots + {}\nonumber\\\\\
+           &+ \left(f_m X + f_{m-1}\right) (\omega^i)^{m-2} + {}\nonumber\\\\\
+           &+ \left(f_m \right) (\omega^i)^{m-1}\nonumber
 \end{align}
 Baptising the polynomials above as $H_j(X)$, we can rewrite as:
 \begin{align}
     Q_i(X) &\bydef H_1(X) (\omega^i)^0 + {}\\\\\
-           & + H_2(X) (\omega^i)^1 + {}\\\\\
-           & + \dots + {}\\\\\
-           & + H_m(X) (\omega^i)^{m-1}\Leftrightarrow\\\\\
+           &+ H_2(X) (\omega^i)^1 + {}\nonumber\\\\\
+           &+ \dots + {}\nonumber\\\\\
+           &+ H_m(X) (\omega^i)^{m-1}\nonumber\\\\\
+\end{align}
+More succinctly, the quotient polynomial is:
+\begin{align}
+    \label{eq:Qi-poly}
     Q_i(X) &= \sum_{k=0}^{m-1} H_{j+1}(X) \cdot (\omega^i)^k
 \end{align}
 
@@ -178,37 +199,130 @@ Next, let:
 ...denote a KZG commitment to $H_j(X)$.
 (We are ignoring for now the actual closed-form formula for the $H_j$'s.)
 
-Recalling that
+Recall that
 <!--\begin{align}-->
 $$\pi_i=g^{Q_i(\tau)}$$
 <!--\end{align}-->
-denotes a KZG proof for $\omega^i$, observe that:
+denotes a KZG proof for $\omega^i$.
+
+Therefore, applying Equation \ref{eq:Qi-poly} to $\pi_i$'s expression, we get:
 \begin{align}
     \label{eq:pi-dft-like}
     \pi_i = \prod_{j=0}^{m-1} \left(h_{j+1}\right)^{(\omega^i)^j}, \forall i\in[0,n)
 \end{align}
 
-Finally, taking a close look at Equation \ref{eq:pi-dft-like} above, note that it is actually a **Discrete Fourier Transform (DFT)** on the $h_j$'s!
+But a close look at Equation \ref{eq:pi-dft-like} reveals it is actually a **Discrete Fourier Transform (DFT)** on the $h_j$'s!
 Specifically, we can rewrite it as:
 \begin{align}
     [ \pi_0, \pi_1, \dots, \pi_{n-1} ] = \mathsf{DFT}(h_1, h_2, \dots, h_m, h_{m+1},\dots, h_n)
 \end{align}
 Here, the extra $h_{m+1},\dots,h_n$ (if any) are just commitments to the zero polynomials: i.e., they are the identity element in $\Gr$.
+(Also, this is a DFT on group elements via exponentiations, rather than on field elements via multiplication.)
 
 {: .info}
 **Time complexity:** Ignoring the time to compute the $h_j$ commitments, which we have not discussed, note that the DFT above would only take $O(n\log{n})$ time!
 
-This summarizes the **Feist-Khovratovich (FK)** technique!
+This (almost) summarizes the **Feist-Khovratovich (FK)** technique!
 
-The key idea was that KZG quotient polynomial commitments are actually related, when the evaluation points are roots of unity (see Equation \ref{eq:pi-dft-like}).
+**The key idea?** KZG quotient polynomial commitments are actually related, if the evaluation points are roots of unity (see Equation \ref{eq:pi-dft-like}).
 In particular, these commitments are the output of a single DFT, which can be computed in quasilinear time!
 
 However, **one key challenge remains**, which we address next: computing the $h_j$ commitments.
 
 ## Computing the $h_j = g^{H_j(\tau)}$ commitments 
 
+To see how the $h_j$'s can be computed fast too, let's rewrite them from Equation \ref{eq:HX}.
+\begin{align}
+    H_1(X) &= f_m X^{m-1} + f_{m-1} X^{m-2} + \dots + f_1\\\\\
+    H_2(X) &= f_m X^{m-2} + f_{m-1} X^{m-3} + \dots + f_2\\\\\
+    H_3(X) &= f_m X^{m-3} + f_{m-1} X^{m-4} + \dots + f_3\\\\\
+           &\vdots\\\\\
+    H_m(X) &= f_m X + f_{m-1}\\\\\
+H_{m-1}(X) &= f_m
+\end{align}
+Note we can express the $H_j(X)$ polynomials as a [Toeplitz matrix product][toeplitz] between a matrix $\mathbf{F}$ (of $f(X)$'s coefficients) and a column vector $V(X)$ (of the indeterminate variable $X$):
+\begin{align}
+  \begin{bmatrix}
+      H_1(X)\\\\\
+      H_2(X)\\\\\
+      H_3(X)\\\\\
+      \vdots\\\\\
+      H_m(X)\\\\\
+  H_{m-1}(X)\\\\\
+  \end{bmatrix}
+  &=
+  \begin{bmatrix}
+  f_m & f_{m-1} & f_{m-2} & f_{m-3} & \dots   & f_2   & f_1\\\\\
+  0   & f_m     & f_{m-1} & f_{m-2} & \dots   & f_3   & f_2\\\\\
+  0   & 0       & f_m     & f_{m-1} & \dots   & f_4   & f_3\\\\\
+  \vdots &      &         & \ddots  &         &       & \vdots\\\\\
+  0   & 0       & 0       & 0       & \dots   & f_m   & f_{m-1}\\\\\
+  0   & 0       & 0       & 0       & \dots   & 0     & f_m
+  \end{bmatrix}
+  \cdot
+  \begin{bmatrix}
+    X^{m-1}\\\\\
+    X^{m-2}\\\\\
+    X^{m-3}\\\\\
+    \vdots\\\\\
+    X\\\\\
+    1
+  \end{bmatrix}
+  \\\\\
+  &\bydef
+  \mathbf{F} \cdot V(X)
+\end{align}
+Therefore, the commitments $h_j$ to the $H_j(X)$'s can also be expressed as a Toeplitz matrix product, where "multiplication" is replaced with "exponentation" and the column vector $V(X)$ is replaced by $V(\tau)$:
+\begin{align}
+  \begin{bmatrix}
+      h_1\\\\\
+      h_2\\\\\
+      h_3\\\\\
+      \vdots\\\\\
+      h_m\\\\\
+  h_{m-1}\\\\\
+  \end{bmatrix}
+  &=
+  \begin{bmatrix}
+  f_m & f_{m-1} & f_{m-2} & f_{m-3} & \dots   & f_2   & f_1\\\\\
+  0   & f_m     & f_{m-1} & f_{m-2} & \dots   & f_3   & f_2\\\\\
+  0   & 0       & f_m     & f_{m-1} & \dots   & f_4   & f_3\\\\\
+  \vdots &      &         & \ddots  &         &       & \vdots\\\\\
+  0   & 0       & 0       & 0       & \dots   & f_m   & f_{m-1}\\\\\
+  0   & 0       & 0       & 0       & \dots   & 0     & f_m
+  \end{bmatrix}
+  \cdot
+  \begin{bmatrix}
+    \tau^{m-1}\\\\\
+    \tau^{m-2}\\\\\
+    \tau^{m-3}\\\\\
+    \vdots\\\\\
+    \tau\\\\\
+    1
+  \end{bmatrix}
+  \\\\\
+  &\bydef
+  \mathbf{F} \cdot V(\tau)
+\end{align}
+Fortunately, it is well known that such a matrix product can be computed in $O(m\log{m})$ time (incidentally, also via DFTs).
+If you are curious, in a [previous blogpost][toeplitz], as well as in a short paper[^Tome20How], we explain in detail how this works.
+
+## Conclusion
+
+**We are all done!**
+To summarize, to compute all proofs $\pi_i$ for $f(\omega^i)$, FK does the following:
+
+ 1. Computes all $h_j$'s in $O(m\log{m})$ time via a Toeplitz matrix product
+ 2. Computes all $\pi_i$'s in $O(n\log{n})$ time via a DFT on the $h_j$'s
+
+A few things that we could still talk about, but we are out of time:
+
+ - Implementing this efficiently (see one attempt [here](https://github.com/alinush/libpolycrypto/blob/fk/libpolycrypto/bench/BenchFk.cpp))
+ - Other techniques for computing proofs on multiple polynomials from the FK paper[^FK20]
+
 <!--
-where:
+General formula for $H_j$'s:
+
 \begin{align}
     H_j(X) \bydef \sum_{k=j}^m f_{k} X^{k-j}, \forall j\in[1,m]
 \end{align}
@@ -224,28 +338,10 @@ where:
     H_m(X) = f_m X^{m-m} = f_m
 -->
 
-<!--We can regard the equation above as an **inner product**:
-\begin{align}
-    Q_i(X) \bydef [ H_1(X),\dots, H_m(X) ] \cdot [ (\omega^i)^0, \dots, (\omega^i)^{m-1} ]^\top
-\end{align}-->
-
-<!--
-\begin{align}
-    \pi_i &= \left(\left(g^{\tau^{m-1}}\right)^{f_m} \left(g^{\tau^{m-2}}\right)^{f_{m-1}}  + \dots + f_1\right) (\omega^i)^0 + {}\\\\\
-          &+ \left(f_m X^{m-2} + f_{m-1} X^{m-3} + \dots + f_2\right) (\omega^i)^1 + {}\\\\\
-          &+ \left(f_m X^{m-3} + f_{m-1} X^{m-4} + \dots + f_3\right) (\omega^i)^2 + {}\\\\\
-          &+ \dots + {}\\\\\
-          &+ \left(f_m X + f_{m-1}\right) (\omega^i)^{m-2} + {}\\\\\
-          &+ \left(f_m \right) (\omega^i)^{m-1}
-\end{align}
--->
-
-
-{: .error}
-**TODO:** Continue.
-
 ---
 
 {% include refs.md %}
 
 [poly-division]: https://en.wikipedia.org/wiki/Polynomial_long_division#Pseudocode
+[toeplitz]: /2020/03/19/multiplying-a-vector-by-a-toeplitz-matrix.html 
+[amt]: /2020/03/12/towards-scalable-vss-and-dkg.html

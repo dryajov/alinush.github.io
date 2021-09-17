@@ -19,21 +19,22 @@
 	{%- endif -%}
   
   _config.TeX.Macros = {
-    F:  '\\mathbb{F}',
-    Gr:  '\\mathbb{G}',
-    Gho:  '\\Gr_?',
+    bra: ['\\left\\langle #1\\right|', 1],
+    bydef: '\\stackrel{\\mathsf{def}}{=}',
+    braket: ['\\langle \#1 \\mid \#2 \\rangle',2],
+    ket: ['\\left| \#1\\right\\rangle',1],
     lagr: '\\mathcal{L}',
     negl: '\\mathsf{negl}',
     pk: '\\mathsf{pk}',
     poly: '\\mathsf{poly}',
     vk: '\\mathsf{vk}',
+    F:  '\\mathbb{F}',
+    Gho:  '\\Gr_?',
+    Gr:  '\\mathbb{G}',
     Z:  '\\mathbb{Z}',
-    ZNs:  '\\Z_N^*',
     Zp: '\\Z_p',
     Zq: '\\Z_q', 
-    bra: ['\\left\\langle #1\\right|', 1],
-    ket: ['\\left| \#1\\right\\rangle',1],
-    braket: ['\\langle \#1 \\mid \#2 \\rangle',2],
+    ZNs:  '\\Z_N^*',
   };
 
   //_config.TeX.extensions = ["color.js"];

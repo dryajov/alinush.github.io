@@ -20,7 +20,7 @@ sidebar:
 
 ### Somewhat incremental cross-aggregation
 
-Pointproofs supports cross-aggregating **sub**vector proofs that were obtained from a previous round of aggregation.
+Pointproofs supports cross-aggregating **subvector** proofs $\pi_I$ that were obtained from a previous round of aggregating **individual** proofs $$(\pi_i)_{i\in I}$$, where $I\subset [n]$ is a set of vector positions.
 In that sense, it can be thought of a being somewhat _incremental_.
 
 <!-- TODO: This is different than the cross-aggregation of proofs from Hyperproofs which is not at all somewhat incremental in the above sense. -->

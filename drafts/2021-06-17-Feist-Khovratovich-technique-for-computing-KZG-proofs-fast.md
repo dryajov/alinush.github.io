@@ -79,9 +79,9 @@ If done naively, this would take $O(nm)$ time, which is **too expensive!**
 
 {: .warning}
 **Lower bound?** 
-Is this $O(nm)$ time complexity inherent? After all, to compute $\pi_i$ don't we first need to compute $Q_i(X)$, which takes $O(m)$ time?
+Is this $O(nm)$ time complexity inherent? After all, to compute $\pi_i$ don't we first need to compute $Q_i(X)$, which takes $O(m)$ time? As you'll see below, the answer is **"no!"**
 
-Fortunately, Feist and Khovratovich observe that the $Q_i(X)$'s are algebraically-related and so are their KZG commitments $\pi_i$!
+Fortunately, Feist and Khovratovich observe that the $Q_i$'s are algebraically-related and so are their $\pi_i$ KZG commitments!
 As a result, they observe that computing all $\pi_i$'s does **not** require computing all $Q_i$'s.
 
 Below, we explain how their faster, $O(n\log{n})$-time technique works!
@@ -156,7 +156,7 @@ Next, let us expand Equations \ref{eq:div-coeffs-1} and \ref{eq:div-coeffs-2} ab
             t_1 &= \underline{f_2 + \omega^i \cdot f_3 + \omega^{2i} \cdot f_4 + \dots + \omega^{(m-2)i} \cdot f_m}\\\\\
             t_0 &= \underline{f_1 + \omega^i \cdot f_2 + \omega^{2i} \cdot f_3 + \dots + \omega^{(m-1)i} \cdot f_m}
 \end{align}
-As you can see above, the quotient polynomial $Q_i(X)$ obtained when dividing $f(X)$ by $X-\omega^i$ is:
+As you can see above, the quotient polynomial $Q_i(X) = \sum_{j=0}^{m-1} t_j X^j$ obtained when dividing $f(X)$ by $X-\omega^i$ is:
 \begin{align}
     Q_i(X) &= f_m \cdot X^{m-1} + {}\\\\\
            &+ \left(f_{m-1} + \omega^i \cdot f_m\right) \cdot X^{m-2} + {}\nonumber\\\\\
@@ -194,6 +194,7 @@ More succinctly, the quotient polynomial is:
 
 Next, let:
 \begin{align}
+    \label{eq:hj}
     h_j = g^{H_j(\tau)},\forall j\in[m]
 \end{align}
 ...denote a KZG commitment to $H_j(X)$.
@@ -214,18 +215,19 @@ Therefore, applying Equation \ref{eq:Qi-poly} to $\pi_i$'s expression, we get:
 But a close look at Equation \ref{eq:pi-dft-like} reveals it is actually a **Discrete Fourier Transform (DFT)** on the $h_j$'s!
 Specifically, we can rewrite it as:
 \begin{align}
-    [ \pi_0, \pi_1, \dots, \pi_{n-1} ] = \mathsf{DFT}(h_1, h_2, \dots, h_m, h_{m+1},\dots, h_n)
+    \label{eq:pi-dft}
+    [ \pi_0, \pi_1, \dots, \pi_{n-1} ] = \mathsf{DFT}\_{\Gr}(h_1, h_2, \dots, h_m, h_{m+1},\dots, h_n)
 \end{align}
 Here, the extra $h_{m+1},\dots,h_n$ (if any) are just commitments to the zero polynomials: i.e., they are the identity element in $\Gr$.
-(Also, this is a DFT on group elements via exponentiations, rather than on field elements via multiplication.)
+(Also, $\mathsf{DFT}\_{\Gr}$ is a DFT on group elements via exponentiations, rather than on field elements via multiplication.)
 
 {: .info}
-**Time complexity:** Ignoring the time to compute the $h_j$ commitments, which we have not discussed, note that the DFT above would only take $O(n\log{n})$ time!
+**Time complexity:** Ignoring the time to compute the $h_j$ commitments, which we have not discussed yet, note that the DFT above would only take $O(n\log{n})$ time!
 
 This (almost) summarizes the **Feist-Khovratovich (FK)** technique!
 
-**The key idea?** KZG quotient polynomial commitments are actually related, if the evaluation points are roots of unity (see Equation \ref{eq:pi-dft-like}).
-In particular, these commitments are the output of a single DFT, which can be computed in quasilinear time!
+**The key idea?** KZG quotient polynomial commitments are actually related, if the evaluation points are roots of unity.
+Specifically, these commitments are the output of a single DFT as per Equation \ref{eq:pi-dft}, which can be computed in quasilinear time!
 
 However, **one key challenge remains**, which we address next: computing the $h_j$ commitments.
 
@@ -240,7 +242,7 @@ To see how the $h_j$'s can be computed fast too, let's rewrite them from Equatio
     H_m(X) &= f_m X + f_{m-1}\\\\\
 H_{m-1}(X) &= f_m
 \end{align}
-Note we can express the $H_j(X)$ polynomials as a [Toeplitz matrix product][toeplitz] between a matrix $\mathbf{F}$ (of $f(X)$'s coefficients) and a column vector $V(X)$ (of the indeterminate variable $X$):
+**Key observation:** We can express the $H_j(X)$ polynomials as a [Toeplitz matrix product][toeplitz] between a matrix $\mathbf{F}$ (of $f(X)$'s coefficients) and a column vector $V(X)$ (of the indeterminate variable $X$):
 \begin{align}
   \begin{bmatrix}
       H_1(X)\\\\\
@@ -310,14 +312,15 @@ If you are curious, in a [previous blogpost][toeplitz], as well as in a short pa
 ## Conclusion
 
 **We are all done!**
-To summarize, to compute all proofs $\pi_i$ for $f(\omega^i)$, FK does the following:
+To summarize, to compute all proofs $\pi_i$ for $f(\omega^i)$, the _Feist-Khovratovich (FK)_ technique[^FK20] proceeds as follows:
 
- 1. Computes all $h_j$'s in $O(m\log{m})$ time via a Toeplitz matrix product
- 2. Computes all $\pi_i$'s in $O(n\log{n})$ time via a DFT on the $h_j$'s
+ 1. Computes all $h_j$'s from Equation \ref{eq:hj} in $O(m\log{m})$ time via a Toeplitz matrix product
+ 2. Computes all $\pi_i$'s in $O(n\log{n})$ time via a DFT on the $h_j$'s, as per Equation \ref{eq:pi-dft}
 
 A few things that we could still talk about, but we are out of time:
 
  - Implementing this efficiently (see one attempt [here](https://github.com/alinush/libpolycrypto/blob/fk/libpolycrypto/bench/BenchFk.cpp))
+ - Optimizing part of the implementation (see Dankrad's observation's in [this tweet](https://twitter.com/alinush407/status/1360228894851305475))
  - Other techniques for computing proofs on multiple polynomials from the FK paper[^FK20]
 
 <!--

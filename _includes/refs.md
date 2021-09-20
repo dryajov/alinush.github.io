@@ -722,6 +722,8 @@
 
 [^GW20]: **A simplified polynomial protocol for lookup tables**, by Ariel Gabizon and Zachary J. Williamson, *in Cryptology ePrint Archive, Report 2020/315*, 2020, [[URL]](https://eprint.iacr.org/2020/315)
 
+[^GW21]: **fflonk: a Fast-Fourier inspired verifier efficient version of PlonK**, by Ariel Gabizon and Zachary J. Williamson, *in Cryptology ePrint Archive, Report 2021/1167*, 2021, [[URL]](https://ia.cr/2021/1167)
+
 [^GWC19]: **PLONK: Permutations over Lagrange-bases for Oecumenical Noninteractive arguments of Knowledge**, by Ariel Gabizon and Zachary J. Williamson and Oana Ciobotaru, *in Cryptology ePrint Archive, Report 2019/953*, 2019, [[URL]](https://eprint.iacr.org/2019/953)
 
 [^GWYplus19]: **BlockMaze: An Efficient Privacy-Preserving Account-Model Blockchain Based on zk-SNARKs**, by Zhangshuang Guan and Zhiguo Wan and Yang Yang and Yan Zhou and Butian Huang, *in Cryptology ePrint Archive, Report 2019/1354*, 2019, [[URL]](https://eprint.iacr.org/2019/1354)

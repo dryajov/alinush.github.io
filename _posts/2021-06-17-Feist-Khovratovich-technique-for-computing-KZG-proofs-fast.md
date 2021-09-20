@@ -116,6 +116,7 @@ Note that the $t_i$'s are a function of $f_m, f_{m-1},\dots, f_1$, but not of $f
  <summary>
   <b style="color: #f5222d">Proof:</b> One could prove by induction that the coefficients above are correct.
   However, it's easiest to take an example and convince yourself, as shown below for $m=4$.
+  (Click to expand.)
  </summary>
 
  <div style="margin-left: .3em; border-left: .15em solid #f5222d; padding-left: .5em;"><p>

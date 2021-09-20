@@ -1,5 +1,5 @@
 ---
-layout: article
+#layout: article
 tags:
 - vc
 - vector-commitments

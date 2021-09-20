@@ -99,7 +99,7 @@ cryptomat:
     #  - title: aSVC
     #    url: 
       - title: Feist-Khovratovich (FK) precomputation
-        url: /drafts/2021-06-17-Feist-Khovratovich-technique-for-computing-KZG-proofs-fast.html # TODO: finalize and rename
+        url: /2021/06/17/Feist-Khovratovich-technique-for-computing-KZG-proofs-fast.html 
 
       - title: Pointproofs
         url: /drafts/2021-09-10-Pointproofs-Vector-Commitments.html # TODO: finalize and rename

@@ -7,7 +7,7 @@ titles:
 key: page-papers
 ---
 
-**Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments**, Shravan Srinivasan, Alex Chepurnoy, Charalampos Papamanthou, Alin Tomescu, Yupeng Zhang, _in submission_, <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2021/599.pdf"><i class="fas fa-download"></i>PDF</a>, [Code](https://github.com/hyperproofs/hyperproofs)
+**Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments**, Shravan Srinivasan, Alex Chepurnoy, Charalampos Papamanthou, Alin Tomescu, Yupeng Zhang, _in USENIX Security 2022_, <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2021/599.pdf"><i class="fas fa-download"></i>PDF</a>, [Code](https://github.com/hyperproofs/hyperproofs)
 
 **Reaching Consensus for Asynchronous Distributed Key Generation**, Ittai Abraham, Philipp Jovanovic, Mary Maller, Sarah Meiklejohn, Gilad Stern, Alin Tomescu, _PODC 2021_, <a class="button button--success button--rounded button--sm" href="https://arxiv.org/abs/2102.09041"><i class="fas fa-download"></i>PDF</a>, 
 

@@ -7,6 +7,10 @@ titles:
 key: page-talks
 ---
 
+#### Fantastic trees and where to find them
+
+Protocol Labs [slides here](https://docs.google.com/presentation/d/1szwaK-uOTJm84ZT6my_ELN2rlrz8nxrchVAlao4HAXk/edit?usp=sharing)
+
 #### Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XyxWH008tzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

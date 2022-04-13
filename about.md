@@ -75,7 +75,7 @@ Naturally, he dislikes clouds.
 <strike><b>Alin might buy a motorcycle and risk the few, still-functioning limbs in his body.
 Someone should convince him not to do this.</b></strike>
 
-### The motorcycle
+### The motorcycle(s)
 
 In July 2020, Alin purchased a 2017 Honda Rebel 500.
 He has never been more happy and frightened at the same time.

@@ -49,7 +49,7 @@ article_header:
 
 <!-- See notes here about HTML blocks: https://kramdown.gettalong.org/syntax.html#html-blocks -->
 
-### The official statement
+### The "official statement"
 
 <!-- ![](/pictures/tbow-th.jpg){: .align-right} -->
 
@@ -58,15 +58,15 @@ I was always fascinated with computers: playing on them, fixing them & programmi
 I like to read, write and talk about _ideas_.
 You can see some of my writing on [this website](/archive.html) and on [Decentralized Thoughts](https://decentralizedthoughts.github.io/about-alin).
 
-I am currently a _Postdoctoral Researcher_ at [VMware Research](https://research.vmware.com).
+I am currently a _Research Scientist_ at [Aptos Labs](https://aptoslabs.com).
 My broad [research interests](/papers.html) are in cryptography and its practical applications. 
 I am very interested in authenticated data structures, especially if based on more exotic primitives, such as [constant-sized polynomial commitments](/2020/05/06/kzg-polynomial-commitments.html). 
 In the past, I’ve worked on transparency logs, threshold cryptography, anonymous cryptocurrencies, scalable Byzantine Fault Tolerance (BFT) protocols, append-only logs on top of Bitcoin, and oblivious file systems.
 
-### The truth
+### The _truth_
 
 Alin is a prolific slav-squatter. 
-In his free time, he likes to play piano, <strike>sit in coffee shops,</strike> ride motorcycles, and lift things up and put them back down again.
+In his free time, he likes to play piano, ride motorcycles to coffee shops, and lift things up and put them back down again.
 Slowly.
 He also enjoys travelling, but only to destinations with total solar eclipses.
 Naturally, he dislikes clouds.
@@ -77,11 +77,16 @@ Someone should convince him not to do this.</b></strike>
 
 ### The motorcycle
 
-Alin recently purchased a 2017 Honda Rebel 500.
-He has never been more happy and terrified at the same time.
-Even after taking basic and intermediate riding courses, he remains terrified.
+In July 2020, Alin purchased a 2017 Honda Rebel 500.
+He has never been more happy and frightened at the same time.
+Even after taking basic, intermediate and advanced riding clinics, he remains terrified.
 This is probably for the best.
 Wish him luck.
+
+_Update:_ Since July 2020, Alin continues to have all his limbs.
+Encouraged by these developments, Alin has bought a 2019 BMW R1250GS and traded-in his Rebel 500 for a brand new 2022 Honda Rebel 1100 DCT.
+He is clearly disturbed.
+Someone please help him.
 
 <!--
 To deal with his predisposition towards death, Alin has been doing several things:
@@ -102,6 +107,9 @@ To deal with his predisposition towards death, Alin has been doing several thing
   <div class="swiper__slide"><a href="/pictures/rebel-500.jpg"><img src="/pictures/rebel-500.jpg" /></a></div>
   <div class="swiper__slide"><a href="/pictures/rebel-500.jpg"><img src="/pictures/rebel-500-wet.jpg" /></a></div>
   <div class="swiper__slide"><a href="/pictures/rebel-500.jpg"><img src="/pictures/rebel-500-vista-point.jpg" /></a></div>
+  <div class="swiper__slide"><a href="/pictures/r1250gs-freshly-bought.jpg"><img src="/pictures/r1250gs-freshly-bought.jpg" /></a></div>
+  <div class="swiper__slide"><a href="/pictures/r1250gs.jpg"><img src="/pictures/r1250gs.jpg" /></a></div>
+  <div class="swiper__slide"><a href="/pictures/rebel-1100-jjlake.jpg"><img src="/pictures/rebel-1100-jjlake.jpg" /></a></div>
  </div>
  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>

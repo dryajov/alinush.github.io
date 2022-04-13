@@ -104,12 +104,12 @@ To deal with his predisposition towards death, Alin has been doing several thing
 
 <div class="swiper swiper-demo">
  <div class="swiper__wrapper">
+  <div class="swiper__slide"><a href="/pictures/r1250gs-just-bought.jpg"><img src="/pictures/r1250gs-just-bought.jpg" /></a></div>
+  <div class="swiper__slide"><a href="/pictures/rebel-1100-jjlake.jpg"><img src="/pictures/rebel-1100-jjlake.jpg" /></a></div>
+  <div class="swiper__slide"><a href="/pictures/r1250gs.jpg"><img src="/pictures/r1250gs.jpg" /></a></div>
   <div class="swiper__slide"><a href="/pictures/rebel-500.jpg"><img src="/pictures/rebel-500.jpg" /></a></div>
   <div class="swiper__slide"><a href="/pictures/rebel-500.jpg"><img src="/pictures/rebel-500-wet.jpg" /></a></div>
   <div class="swiper__slide"><a href="/pictures/rebel-500.jpg"><img src="/pictures/rebel-500-vista-point.jpg" /></a></div>
-  <div class="swiper__slide"><a href="/pictures/r1250gs-freshly-bought.jpg"><img src="/pictures/r1250gs-freshly-bought.jpg" /></a></div>
-  <div class="swiper__slide"><a href="/pictures/r1250gs.jpg"><img src="/pictures/r1250gs.jpg" /></a></div>
-  <div class="swiper__slide"><a href="/pictures/rebel-1100-jjlake.jpg"><img src="/pictures/rebel-1100-jjlake.jpg" /></a></div>
  </div>
  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>

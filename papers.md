@@ -7,6 +7,8 @@ titles:
 key: page-papers
 ---
 
+**UTT: Decentralized Ecash with Accountable Privacy**, Alin Tomescu, Adithya Bhat, Benny Applebaum, Ittai Abraham, Guy Gueta, Benny Pinkas, Avishay Yanai, _in submission_, <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2022/452.pdf"><i class="fas fa-download"></i>PDF</a>, [Code](https://github.com/definitelyNotFBI/utt)
+
 **Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments**, Shravan Srinivasan, Alex Chepurnoy, Charalampos Papamanthou, Alin Tomescu, Yupeng Zhang, _in USENIX Security 2022_, <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2021/599.pdf"><i class="fas fa-download"></i>PDF</a>, [Code](https://github.com/hyperproofs/hyperproofs)
 
 **Reaching Consensus for Asynchronous Distributed Key Generation**, Ittai Abraham, Philipp Jovanovic, Mary Maller, Sarah Meiklejohn, Gilad Stern, Alin Tomescu, _PODC 2021_, <a class="button button--success button--rounded button--sm" href="https://arxiv.org/abs/2102.09041"><i class="fas fa-download"></i>PDF</a>, 
@@ -15,7 +17,7 @@ key: page-papers
 
 **How to compute all Pointproofs**, Alin Tomescu, short note in _Cryptology ePrint Archive_, <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2020/1516.pdf"><i class="fas fa-download"></i>PDF</a>, [LaTeX](https://github.com/alinush/pointproofs-note), [Code](https://github.com/alinush/libvectcom)
 
-**Authenticated Dictionaries with Cross-Incremental Proof (Dis)aggregation**, Alin Tomescu, Yu Xia, Zachary Newman, _in submission_, [blogpost](/2020/11/26/Authenticated-Dictionaries-with-Cross-Incremental-Proof-Disaggregation.html), <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2020/1239.pdf"><i class="fas fa-download"></i>PDF</a>, [zkStudyClub talk](https://www.youtube.com/watch?v=PrgeQJioCI8), [zkStudyClub slides](https://github.com/alinush/authdict-talk/blob/zkstudyclub/talk.pdf)
+**Authenticated Dictionaries with Cross-Incremental Proof (Dis)aggregation**, Alin Tomescu, Yu Xia, Zachary Newman, _in Cryptology ePrint Archive_, [blogpost](/2020/11/26/Authenticated-Dictionaries-with-Cross-Incremental-Proof-Disaggregation.html), <a class="button button--success button--rounded button--sm" href="https://eprint.iacr.org/2020/1239.pdf"><i class="fas fa-download"></i>PDF</a>, [zkStudyClub talk](https://www.youtube.com/watch?v=PrgeQJioCI8), [zkStudyClub slides](https://github.com/alinush/authdict-talk/blob/zkstudyclub/talk.pdf)
 
 **Aggregatable Subvector Commitments for Stateless Cryptocurrencies**, Alin Tomescu, Ittai Abraham, Vitalik Buterin, Justin Drake, Dankrad Feist and Dmitry Khovratovich, in _SCN 2020_. [blogpost](https://alinush.github.io/2020/05/06/aggregatable-subvector-commitments-for-stateless-cryptocurrencies.html), <a class="button button--success button--rounded button--sm" href="http://eprint.iacr.org/2020/527.pdf"><i class="fas fa-download"></i>PDF</a>, [LaTeX](https://github.com/alinush/asvc-paper), [SCN'20 talk](https://www.youtube.com/watch?v=Yzs6DEVFTLM), [SCN'20 slides](https://github.com/alinush/asvc-talk/blob/scn2020/talk.pdf), [zkStudyClub talk](https://www.youtube.com/watch?v=KGRnpjPjduI), [zkStudyClub slides](https://github.com/alinush/asvc-talk/blob/zkstudyclub/talk.pdf)
 

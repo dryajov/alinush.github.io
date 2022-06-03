@@ -55,17 +55,38 @@ article_header:
 
 I was born and raised in [Pitești](https://en.wikipedia.org/wiki/Pitesti), a small city in Romania, and moved to the US in 2008.
 I was always fascinated with computers: playing on them, fixing them & programming them.
-I like to read, write and talk about _ideas_.
-You can see some of my writing on [this website](/archive.html) and on [Decentralized Thoughts](https://decentralizedthoughts.github.io/about-alin).
+I like to read and write.
+In fact, you can see some of my writing on [this website](/archive.html) and on [Decentralized Thoughts](https://decentralizedthoughts.github.io/about-alin).
 
 I am currently a _Research Scientist_ at [Aptos Labs](https://aptoslabs.com).
-My broad [research interests](/papers.html) are in cryptography and its practical applications. 
-I am very interested in authenticated data structures, especially if based on more exotic primitives, such as [constant-sized polynomial commitments](/2020/05/06/kzg-polynomial-commitments.html). 
-In the past, I’ve worked on transparency logs, threshold cryptography, anonymous cryptocurrencies, scalable Byzantine Fault Tolerance (BFT) protocols, append-only logs on top of Bitcoin, and oblivious file systems.
+My broad [research interests](/papers.html) are in cryptography and its practical applications.
+Currently, my main research focus is on efficiently storing authenticated dictionaries on disk, so as to remove the main bottleneck of block validation in blockchain systems.
+In general, I remain very interested in authenticated data structures, especially if based on more exotic primitives, such as [constant-sized polynomial commitments](/2020/05/06/kzg-polynomial-commitments.html).
+
+In the past, I've led research on
+[anonymous cryptocurrencies](https://eprint.iacr.org/2022/452),
+[tree-based vector commitments](https://www.usenix.org/system/files/sec22fall_srinivasan.pdf),
+[constant-sized vector commitments](https://link.springer.com/chapter/10.1007/978-3-030-57990-6_3),
+[threshold cryptography](https://www.computer.org/csdl/proceedings-article/sp/2020/349700b367/1j2LgjE3Q6Q),
+[Verkle trees](https://math.mit.edu/research/highschool/primes/materials/2019/conf/12-5-Kuszmaul.pdf),
+[transparency logs](https://dl.acm.org/doi/10.1145/3319535.3345652),
+and
+[append-only logs on top of Bitcoin](https://dl.acm.org/doi/10.1145/3319535.3345652).
+
+I've also helped with, but not led, research on 
+[aggregatable distributed key generation](https://link.springer.com/chapter/10.1007/978-3-030-77870-5_6),
+[share recovery for verifiable secret sharing](https://dl.acm.org/doi/10.1145/3319535.3354207),
+[scalable Byzantine Fault Tolerance (BFT) protocols](https://ieeexplore.ieee.org/document/8809541),
+and
+[oblivious file systems](https://dl.acm.org/doi/10.1145/2382196.2382299).
+
+Before joining Aptos Labs, I was a researcher at VMware Research.
+Before VMware, I was a PhD student at MIT, working on cryptography research with [Srini Devadas](https://people.csail.mit.edu/devadas/).
+Before joining MIT, I was building tamper-proof clouds and end-to-end encrypted outsourced file storage at [Private Machines](https://privatemachines.com/).
 
 ### The _truth_
 
-Alin is a prolific slav-squatter. 
+Alin is a prolific slav-squatter.
 In his free time, he likes to play piano, ride motorcycles to coffee shops, and lift things up and put them back down again.
 Slowly.
 He also enjoys travelling, but only to destinations with total solar eclipses.
